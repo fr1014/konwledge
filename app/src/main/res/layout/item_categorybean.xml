@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="categorybean"
+            type="com.fr.konwledge.bean.CategoryBean" />
+
+        <variable
+            name="date"
+            type="java.util.Date" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp">
+
+        <RelativeLayout
+            android:id="@+id/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{onClickListener}"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_toStartOf="@id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{categorybean.desc}"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@{categorybean.type}"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="80dp"
+                android:layout_toEndOf="@id/type"
+                android:text="@{categorybean.date}"
+                android:textColor="@color/text_color" />
+
+            <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:visibility="@{categorybean.imageViewVisibility}"
+            android:src="@drawable/ic_launcher_background"
+            app:imageUrl="@{categorybean.imageUrl}" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_view" />
+    </RelativeLayout>
+</layout>

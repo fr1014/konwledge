@@ -1,0 +1,26 @@
+package com.fr.konwledge.application;
+
+import android.app.Application;
+import android.content.Context;
+
+import com.fr.konwledge.BuildConfig;
+import com.fr.konwledge.network.RetrofitManager;
+
+public class BaseApplication extends Application {
+
+    private static Context mContext;
+
+    public BaseApplication() {
+        mContext = this;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        RetrofitManager.getInstance().init(BuildConfig.DEBUG);
+    }
+
+    public static Context getContext() {
+        return mContext;
+    }
+}
