@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
  * 创建时间：2019/7/19
  * 作者：范瑞
  */
-public class BaseViewHolder<B extends ViewDataBinding> extends RecyclerView.ViewHolder {
+public class BaseViewHolder<VB extends ViewDataBinding> extends RecyclerView.ViewHolder {
 
-    private B mBinding;
+    private VB mBinding;
 
-    public BaseViewHolder(B binding) {
+    public BaseViewHolder(VB binding) {
         super(binding.getRoot());
         this.mBinding = binding;
     }
 
-    public B getBinding(){
+    public VB getBinding(){
         return mBinding;
     }
 }

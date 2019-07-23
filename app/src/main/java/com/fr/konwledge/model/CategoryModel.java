@@ -1,7 +1,5 @@
 package com.fr.konwledge.model;
 
-import android.util.Log;
-
 import com.fr.konwledge.base.BaseLoadListener;
 import com.fr.konwledge.bean.CategoryListBean;
 import com.fr.konwledge.bean.CategoryListBean.ResultsBean;
