@@ -6,23 +6,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/colorPrimary">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorColor="@color/selected_text"
-                app:tabIndicatorFullWidth="false"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/selected_text"
-                app:tabTextColor="@color/text_color" />
-
-        </LinearLayout>
+            app:tabIndicatorColor="@color/selected_text"
+            app:tabIndicatorFullWidth="false"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/selected_text"
+            app:tabTextColor="@color/unselected_text" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"

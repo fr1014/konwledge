@@ -2,7 +2,6 @@ package com.fr.konwledge.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 
 /**
  * 创建时间：2019/7/20
@@ -57,11 +56,6 @@ public class DialogHelper {
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage(msg);
-        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                progressDialog = null;
-            }
-        });
+        progressDialog.setOnCancelListener(dialog -> progressDialog = null);
     }
 }

@@ -5,7 +5,6 @@ import com.fr.konwledge.bean.CategoryListBean.ResultsBean;
 import com.fr.konwledge.constant.MainConstant;
 import com.fr.konwledge.model.CategoryModel;
 import com.fr.konwledge.view.IView.ICategoryView;
-import com.fr.konwledge.view.adapter.RVBeanAdapter;
 import com.fr.konwledge.view.adapter.RVCategoryAdapter;
 
 import java.util.List;

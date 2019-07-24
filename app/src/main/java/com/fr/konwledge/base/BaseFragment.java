@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment {
     protected V binding;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,9 +37,4 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment {
 
     public abstract int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
 }

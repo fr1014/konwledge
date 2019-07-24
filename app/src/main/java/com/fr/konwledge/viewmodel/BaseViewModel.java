@@ -9,6 +9,4 @@ public abstract class BaseViewModel<T> {
 
     protected abstract void getData();
 
-
-
 }

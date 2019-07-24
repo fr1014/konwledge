@@ -25,7 +25,6 @@ public class CategoryBean extends BaseObservable {
         this.bean = bean;
         this.mPosition = position;
         initData();
-
     }
 
     public String getDesc() {

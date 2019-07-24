@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F5B740</color>
-    <color name="colorPrimaryDark">#F5B740</color>
-    <color name="colorAccent">#F5B740</color>
+    <color name="colorPrimary">#FBFDFC</color>
+    <color name="colorPrimaryDark">#00BCD4</color>
+    <color name="colorAccent">#FBFDFC</color>
     <color name="tabs_class">#00BCD4</color>
-    <color name="selected_text">#E9FAD6</color>
-    <color name="black_view">#4D706E6E</color>
-    <color name="text_color">#ff000000</color>
+    <color name="selected_text">#ff000000</color>
+    <color name="unselected_text">#4D706E6E</color>
+    <color name="view">#BEADF5F5</color>
+    <color name="text_color">#CB301717</color>
     <color name="text_title">#FAF5F5</color>
 </resources>

@@ -23,7 +23,6 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
     private ViewPager mViewPager;
     private List<String> mTitles;
     private List<Fragment> mFragments;
-    private int flag;
 
     public static Fragment getInstance() {
         return new ClassifiedFragment();
@@ -44,7 +43,6 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
         mTitles.add("iOS");
         mTitles.add("App");
 
-        flag = mTitles.size();
         mFragments = new ArrayList<>();
         for (int i = 0; i < mTitles.size(); i++){
             mTabLayout.addTab(mTabLayout.newTab().setText(mTitles.get(i)));
@@ -57,8 +55,4 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 }
