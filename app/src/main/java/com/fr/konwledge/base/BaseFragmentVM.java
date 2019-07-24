@@ -16,16 +16,20 @@ public abstract class BaseFragmentVM<V extends ViewDataBinding,VM> extends Fragm
     protected V binding;
     protected VM viewModel;
     private View mView;
+    private boolean isViewCreated; // 界面是否已创建完成
+    private boolean isVisibleToUser; // 是否对用户可见
+    private boolean isDataLoaded; // 数据是否已请求, isNeedReload()返回false的时起作用
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        //避免重复调用 onCreateView
+        //避免重复创建View
         if (mView == null){
             binding = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
             mView = binding.getRoot();
-            initData();
+            isViewCreated = true;
+            tryLoadData();
         }else {
             ViewGroup parent = (ViewGroup) mView.getParent();
             if (parent != null){
@@ -59,6 +63,29 @@ public abstract class BaseFragmentVM<V extends ViewDataBinding,VM> extends Fragm
             intent.putExtra("bundle",bundle);
         }
         startActivity(intent);
+    }
+
+    /**
+     * fragment再次可见时，是否重新请求数据，默认为flase则只请求一次数据
+     *
+     * @return
+     */
+    protected boolean isNeedReload() {
+        return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isVisibleToUser = true;
+        tryLoadData();
+    }
+
+    private void tryLoadData() {
+        if (isViewCreated && isVisibleToUser && !isDataLoaded) {
+            initData();
+            isDataLoaded = true;
+        }
     }
 
 }
