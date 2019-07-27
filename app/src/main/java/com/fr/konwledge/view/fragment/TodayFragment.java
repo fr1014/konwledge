@@ -17,7 +17,7 @@ import com.fr.konwledge.utils.DialogHelper;
 import com.fr.konwledge.utils.Utils;
 import com.fr.konwledge.view.IView.ITodayView;
 import com.fr.konwledge.view.adapter.RVBeanAdapter;
-import com.fr.konwledge.base.BaseFragmentVM;
+import com.fr.konwledge.base.BaseFragment;
 import com.fr.konwledge.view.listener.OnItemClickListener;
 import com.fr.konwledge.bean.TodayBean;
 import com.fr.konwledge.viewmodel.TodayViewModel;
@@ -27,9 +27,10 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
-public class TodayFragment extends BaseFragmentVM<FragmentTodayBinding,TodayViewModel> implements ITodayView,XRecyclerView.LoadingListener,OnItemClickListener<TodayBean> {
+public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView,XRecyclerView.LoadingListener,OnItemClickListener<TodayBean> {
 
     private RVBeanAdapter mTodayAdapter;
+    private TodayViewModel viewModel;
 
     public static Fragment getInstance() {
         return new TodayFragment();

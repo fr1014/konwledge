@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/selected_text"
             app:tabIndicatorFullWidth="false"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/selected_text"
             app:tabTextColor="@color/unselected_text" />
 

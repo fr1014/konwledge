@@ -3,4 +3,7 @@
     <string name="web_unlike">取消收藏</string>
     <string name="web_like">添加收藏</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

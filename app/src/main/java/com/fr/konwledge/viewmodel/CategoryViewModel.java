@@ -34,20 +34,20 @@ public class CategoryViewModel extends BaseViewModel<RVCategoryAdapter> implemen
     @Override
     protected void getData() {
         mLoadType = MainConstant.LoadData.FIRST_LOAD;
-        CategoryModel.getCategoryListBean(mCategory,10,mCurrPage,this);
+        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
     }
 
 
     public void loadRefreshData(){
         mLoadType = MainConstant.LoadData.REFRESH;
         mCurrPage = 1;
-        CategoryModel.getCategoryListBean(mCategory,30,mCurrPage,this);
+        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
     }
 
     public void loadMoreData(){
         mLoadType = MainConstant.LoadData.LOAD_MORE;
         mCurrPage++;
-        CategoryModel.getCategoryListBean(mCategory,30,mCurrPage,this);
+        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
     }
 
     @Override

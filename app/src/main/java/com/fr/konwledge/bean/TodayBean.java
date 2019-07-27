@@ -15,7 +15,6 @@ public class TodayBean extends BaseObservable {
     public ObservableField<Integer> imageViewVisibility;
     private int mPosition;
 
-
     public TodayBean(Bean bean, int position) {
         this.bean = bean;
         this.mPosition = position;

@@ -1,7 +1,6 @@
 package com.fr.konwledge.view.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fr.konwledge.R;
-import com.fr.konwledge.base.BaseFragmentVM;
+import com.fr.konwledge.base.BaseFragment;
 import com.fr.konwledge.bean.CategoryBean;
 import com.fr.konwledge.databinding.FragmentClassifiedChildBinding;
 import com.fr.konwledge.utils.DialogHelper;
@@ -24,8 +23,9 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
-public class ClassifiedChildFragment extends BaseFragmentVM<FragmentClassifiedChildBinding,CategoryViewModel> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<CategoryBean> {
+public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<CategoryBean> {
     private String mClassified;
+    private CategoryViewModel viewModel;
 
     public ClassifiedChildFragment(String classified){
         this.mClassified = classified;

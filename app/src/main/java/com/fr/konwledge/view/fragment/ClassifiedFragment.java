@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.fr.konwledge.R;
+import com.fr.konwledge.base.BaseFragment;
 import com.fr.konwledge.databinding.FragmentClassifiedBinding;
 import com.fr.konwledge.view.adapter.FragmentAdapter;
-import com.fr.konwledge.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -42,6 +42,8 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
         mTitles.add("前端");
         mTitles.add("iOS");
         mTitles.add("App");
+        mTitles.add("拓展资源");
+        mTitles.add("瞎推荐");
 
         mFragments = new ArrayList<>();
         for (int i = 0; i < mTitles.size(); i++){

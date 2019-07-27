@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorHeight="0dp"
                 app:tabIndicatorFullWidth="false"
                 app:tabMode="fixed"
                 app:tabSelectedTextColor="@color/selected_text"
