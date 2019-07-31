@@ -1,5 +1,6 @@
 package com.fr.konwledge.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,14 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import com.fr.konwledge.R;
+
 public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatActivity {
 
     protected V binding;
+    protected Context mContext;
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-
+        mContext = this;
         //初始化DataBinding和ViewModel方法
         initViewDataBinding(savedInstanceState);
 

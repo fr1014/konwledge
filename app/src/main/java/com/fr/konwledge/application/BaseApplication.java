@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.fr.konwledge.BuildConfig;
 import com.fr.konwledge.network.RetrofitManager;
+import com.mob.MobSDK;
 
 public class BaseApplication extends Application {
 
@@ -18,6 +19,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         RetrofitManager.getInstance().init(BuildConfig.DEBUG);
+        //初始化MobSDK
+        MobSDK.init(this);
     }
 
     public static Context getContext() {

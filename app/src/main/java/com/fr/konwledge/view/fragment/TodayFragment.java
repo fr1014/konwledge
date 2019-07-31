@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,11 @@ import com.fr.konwledge.webview.H5WebActivity;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.concurrent.Delayed;
+
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
-public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView,XRecyclerView.LoadingListener,OnItemClickListener<TodayBean> {
+public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView, XRecyclerView.LoadingListener, OnItemClickListener<TodayBean> {
 
     private RVBeanAdapter mTodayAdapter;
     private TodayViewModel viewModel;
@@ -53,7 +56,7 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(mTodayAdapter);
 
-        viewModel = new TodayViewModel(this,mTodayAdapter);
+        viewModel = new TodayViewModel(this, mTodayAdapter);
 
         mTodayAdapter.setOnItemClickListener(this);
     }
@@ -86,13 +89,13 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
         DialogHelper.getInstance().close();
         binding.recyclerView.loadMoreComplete();
         binding.recyclerView.refreshComplete();
-        Utils.ToastShort(getContext(),message);
+        Utils.ToastShort(getContext(), message);
     }
 
     @Override
     public void onItemClickClick(View view, TodayBean bean) {
         Bundle bundle = new Bundle();
-        bundle.putString("url",bean.getUrl());
+        bundle.putString("url", bean.getUrl());
         bundle.putString("title", bean.getDesc());
         startActivity(H5WebActivity.class, bundle);
     }

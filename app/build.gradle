@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 29
@@ -31,6 +32,33 @@ android {
     }
 }
 
+MobSDK {
+    appKey "2bdbfef7c36bd"
+    appSecret "dd2fc5bdae3d6ed318f4b86ce6ce0f65"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+//            SinaWeibo {
+//                appKey "568898243"
+//                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+//                callbackUri "http://www.sharesdk.cn"
+//                shareByAppClient false
+//            }
+//            Wechat {
+//                appId "wx4868b35061f87885"
+//                appSecret "64020361b8ec4c99936c0e3999a9f249"
+//            }
+            QQ {
+                appId "101742674"
+                appKey "fbbc7e4677824671dcd4658fb6f52845"
+                shareByAppClient true
+                enabled true
+            }
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
@@ -53,5 +81,6 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
-    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'    //上拉加载、下拉刷新样式
+    implementation 'de.hdodenhof:circleimageview:3.0.0'     //圆头像
 }

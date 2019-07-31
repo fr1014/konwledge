@@ -26,4 +26,13 @@ public class ImageHelper {
                 .into(imageView);
     }
 
+
+    @BindingAdapter({"head_imageUrl"})
+    public static void loadBlurImage(ImageView imageView,String url) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .transform(new BlurTransform(imageView.getContext(),25,0.8f,70))
+                .into(imageView);
+    }
+
 }

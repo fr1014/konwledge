@@ -1,11 +1,13 @@
 package com.fr.konwledge.webview;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -48,6 +50,7 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
         mWebView.setLayoutParams(params);
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new Html5WebChromeClient());
+        mWebView.setWebViewClient(new HtmlWebClient());
         mWebView.loadUrl(mUrl);
     }
 
@@ -56,6 +59,60 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
             //TODO 顶部显示网页加载进度
+        }
+    }
+
+    private class HtmlWebClient extends H5WebView.BaseWebViewClient{
+        /**
+         * 多页面在同一个WebView中打开，就是不新建activity或者调用系统浏览器打开
+         */
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            final Uri newUrl = request.getUrl();
+            view.loadUrl(String.valueOf(newUrl));
+            return true;
+//            String newUrl = view.getUrl();
+//            try {
+//                //处理intent协议
+//                if (newUrl.startsWith("intent://")) {
+//                    Intent intent;
+//                    try {
+//                        intent = Intent.parseUri(newUrl, Intent.URI_INTENT_SCHEME);
+//                        intent.addCategory("android.intent.category.BROWSABLE");
+//                        intent.setComponent(null);
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+//                            intent.setSelector(null);
+//                        }
+//                        List<ResolveInfo> resolves = getApplicationContext().getPackageManager().queryIntentActivities(intent,0);
+//                        if(resolves.size()>0){
+//                            startActivityIfNeeded(intent, -1);
+//                        }
+//                        return true;
+//                    } catch (URISyntaxException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                // 处理自定义scheme协议
+//                if (!newUrl.startsWith("http")) {
+//                    try {
+//                        // 以下固定写法
+//                        final Intent intent = new Intent(Intent.ACTION_VIEW,
+//                                Uri.parse(newUrl));
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                        startActivity(intent);
+//                    } catch (Exception e) {
+//                        // 防止没有安装的情况
+//                        e.printStackTrace();
+//                        Utils.ToastShort(getApplicationContext(),"您所打开的第三方App未安装！");
+//                    }
+//                    return true;
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            return super.shouldOverrideUrlLoading(view, newUrl);
         }
     }
 
