@@ -36,7 +36,15 @@ public class DialogHelper {
      */
     public void close() {
         if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(200);//显示200毫秒后，取消ProgressDialog
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            });
+            t.start();
         }
     }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Fragment_item_view">
+        <!--是否显示下划线-->
+        <attr name="show_bottom_line" format="boolean" />
+        <!--左边图标-->
+        <attr name="show_left_img" format="integer" />
+        <!--显示的文字-->
+        <attr name="show_text" format="string" />
+    </declare-styleable>
+</resources>
