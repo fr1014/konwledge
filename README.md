@@ -27,5 +27,6 @@ Api地址：http://gank.io/api
 - 异步任务: [RxJava2.0](https://github.com/ReactiveX/RxJava)
 - 图片加载：[Glide](https://github.com/bumptech/glide)
 - 列表：[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)
+- 圆形图片[CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
 ## 版本更新
