@@ -1,7 +1,7 @@
 package com.fr.konwledge.viewmodel;
 
 import com.fr.konwledge.base.BaseLoadListener;
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.constant.MainConstant;
 import com.fr.konwledge.model.CategoryModel;
 import com.fr.konwledge.view.IView.ICategoryView;
@@ -14,7 +14,7 @@ import java.util.List;
  * 作者：范瑞
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
-public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements BaseLoadListener<TestBean> {
+public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements BaseLoadListener<ItemBean> {
 
     private ICategoryView mICategoryView;
     private String mCategory;
@@ -51,7 +51,7 @@ public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements B
     }
 
     @Override
-    public void loadSuccess(List<TestBean> list) {
+    public void loadSuccess(List<ItemBean> list) {
         if (mCurrPage > 1){
             //上拉加载的数据
             adapter.loadMoreData(list);

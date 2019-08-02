@@ -2,7 +2,7 @@ package com.fr.konwledge.model;
 
 import com.fr.konwledge.base.BaseLoadListener;
 import com.fr.konwledge.bean.CategoryListBean;
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.network.RetrofitManager;
 import com.fr.konwledge.network.schedulers.SchedulerProvider;
 
@@ -11,12 +11,12 @@ import retrofit2.Response;
 
 public class CategoryModel {
 
-    public static void getCategoryListBean(String category, int count, int page, BaseLoadListener<TestBean> loadListener) {
+    public static void getCategoryListBean(String category, int count, int page, BaseLoadListener<ItemBean> loadListener) {
         RetrofitManager
                 .getRequest()
                 .getCategoryBean(category, count, page)
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new DisposableObserver<Response<CategoryListBean<TestBean>>>() {
+                .subscribe(new DisposableObserver<Response<CategoryListBean<ItemBean>>>() {
 
                     @Override
                     protected void onStart() {
@@ -24,7 +24,7 @@ public class CategoryModel {
                     }
 
                     @Override
-                    public void onNext(Response<CategoryListBean<TestBean>> listResponse) {
+                    public void onNext(Response<CategoryListBean<ItemBean>> listResponse) {
                             loadListener.loadSuccess(listResponse.body().getResults());
                     }
 

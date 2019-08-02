@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.ObservableField;
 
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.utils.Utils;
 
 import java.util.Date;
@@ -17,11 +17,11 @@ import java.util.List;
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
 public class BeanModel extends BaseObservable {
-    private TestBean bean;
+    private ItemBean bean;
     public ObservableField<Integer> imageViewVisibility;
     private int mPosition;
 
-    public BeanModel(TestBean bean, int position) {
+    public BeanModel(ItemBean bean, int position) {
         this.bean = bean;
         this.mPosition = position;
         initData();

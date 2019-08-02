@@ -12,14 +12,14 @@ import com.fr.konwledge.base.BaseViewHolder;
 import com.fr.konwledge.base.RVBaseAdapter;
 import com.fr.konwledge.databinding.ItemBeanBinding;
 import com.fr.konwledge.model.BeanModel;
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 
 /**
  * 创建时间：2019/7/19
  * 作者：范瑞
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
-public class RVBeanAdapter extends RVBaseAdapter<TestBean, BeanModel,BaseViewHolder<ItemBeanBinding>> {
+public class RVBeanAdapter extends RVBaseAdapter<ItemBean, BeanModel,BaseViewHolder<ItemBeanBinding>> {
 
     public RVBeanAdapter(Context context) {
         super(context);

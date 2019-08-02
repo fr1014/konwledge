@@ -7,7 +7,7 @@ import java.util.List;
  * 作者：范瑞
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
-public class TestBean {
+public class ItemBean {
     /**
      * _id : 5d2f24d19d2122031ea5223f
      * createdAt : 2019-07-17T13:38:25.504Z

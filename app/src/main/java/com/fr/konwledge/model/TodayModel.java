@@ -1,7 +1,7 @@
 package com.fr.konwledge.model;
 
 import com.fr.konwledge.base.BaseLoadListener;
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.bean.TodayListBean;
 import com.fr.konwledge.network.RetrofitManager;
 import com.fr.konwledge.network.schedulers.SchedulerProvider;
@@ -14,13 +14,13 @@ import retrofit2.Response;
 
 public class TodayModel {
 
-    private static List<TestBean> beanList = new ArrayList<>();
+    private static List<ItemBean> beanList = new ArrayList<>();
 
-    public static void getToday(BaseLoadListener<TestBean> loadListener) {
+    public static void getToday(BaseLoadListener<ItemBean> loadListener) {
         RetrofitManager.getRequest()
                 .getTodayBean()
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new DisposableObserver<Response<TodayListBean<TestBean>>>() {
+                .subscribe(new DisposableObserver<Response<TodayListBean<ItemBean>>>() {
 
                     @Override
                     protected void onStart() {
@@ -28,8 +28,8 @@ public class TodayModel {
                     }
 
                     @Override
-                    public void onNext(Response<TodayListBean<TestBean>> response) {
-                        TodayListBean.ResultsBean<TestBean> resultsBean = response.body().getResults();
+                    public void onNext(Response<TodayListBean<ItemBean>> response) {
+                        TodayListBean.ResultsBean<ItemBean> resultsBean = response.body().getResults();
                             beanList.addAll(resultsBean.getAndroid());
                             beanList.addAll(resultsBean.getWeb());
                             beanList.addAll(resultsBean.getApp());

@@ -1,7 +1,7 @@
 package com.fr.konwledge.viewmodel;
 
 import com.fr.konwledge.base.BaseLoadListener;
-import com.fr.konwledge.bean.TestBean;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.constant.MainConstant;
 import com.fr.konwledge.model.TodayModel;
 import com.fr.konwledge.view.IView.ITodayView;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
-public class TodayViewModel extends BaseViewModel<RVBeanAdapter> implements BaseLoadListener<TestBean>{
+public class TodayViewModel extends BaseViewModel<RVBeanAdapter> implements BaseLoadListener<ItemBean>{
 
     private ITodayView mITodayView;
     private int mLoadType;
@@ -35,7 +35,7 @@ public class TodayViewModel extends BaseViewModel<RVBeanAdapter> implements Base
 
 
     @Override
-    public void loadSuccess(List<TestBean> list) {
+    public void loadSuccess(List<ItemBean> list) {
         adapter.refreshData(list);
     }
 
