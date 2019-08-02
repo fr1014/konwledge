@@ -14,10 +14,6 @@ import com.fr.konwledge.databinding.FragmentMineBinding;
 import com.fr.konwledge.model.UserModel;
 import com.fr.konwledge.view.activity.LoginActivity;
 
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.tencent.qq.QQ;
-
 public class MineFragment extends BaseFragment<FragmentMineBinding> {
     private UserModel userModel;
 
@@ -38,10 +34,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
             public void onClick(View view) {
                 switch (view.getId()) {
                     case R.id.out_login:
-                        //share删除文件只有退出程序后才完成
-                        userModel.cacheUserInfo(null);  //覆盖user文件
-                        Platform qq = ShareSDK.getPlatform(QQ.NAME);
-                        qq.removeAccount(true);//退出登录
+                        userModel.logout();
                         startActivity(LoginActivity.class);
                         getActivity().finish();
                         break;
