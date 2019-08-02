@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/login_bg" />
+
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:gravity="center">
+        <bitmap android:src="@drawable/icon"
+            android:gravity="fill"
+            android:alpha="0.8"
+            android:mipMap="true"/>
+    </item>
+
+    <item android:top="200dp"
+        android:height="50dp"
+        android:width="200dp"
+        android:gravity="center">
+        <bitmap android:src="@drawable/icon_2"
+            android:gravity="fill"
+            android:mipMap="true"/>
+    </item>
+</layer-list>
