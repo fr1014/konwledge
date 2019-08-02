@@ -38,8 +38,8 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
             public void onClick(View view) {
                 switch (view.getId()) {
                     case R.id.out_login:
-                        userModel.clearUserInfo();  //share删除文件只有退出程序后才完成
-                        userModel.cacheUserInfo(null);
+                        //share删除文件只有退出程序后才完成
+                        userModel.cacheUserInfo(null);  //覆盖user文件
                         Platform qq = ShareSDK.getPlatform(QQ.NAME);
                         qq.removeAccount(true);//退出登录
                         startActivity(LoginActivity.class);
