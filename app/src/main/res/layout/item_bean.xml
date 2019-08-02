@@ -9,8 +9,8 @@
             type="android.view.View.OnClickListener" />
 
         <variable
-            name="categorybean"
-            type="com.fr.konwledge.bean.CategoryBean" />
+            name="bean"
+            type="com.fr.konwledge.model.BeanModel" />
 
         <variable
             name="date"
@@ -37,7 +37,7 @@
                 android:layout_alignParentStart="true"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="@{categorybean.desc}"
+                android:text="@{bean.desc}"
                 android:textColor="@color/text_color" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="@{categorybean.type}"
+                android:text="@{bean.type}"
                 android:textColor="@color/text_color" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="80dp"
                 android:layout_toEndOf="@id/type"
-                android:text="@{categorybean.date}"
+                android:text="@{bean.date}"
                 android:textColor="@color/text_color" />
 
             <ImageView
@@ -65,9 +65,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="4dp"
-            android:visibility="@{categorybean.imageViewVisibility}"
+            android:visibility="@{bean.imageViewVisibility}"
             android:src="@drawable/ic_launcher_background"
-            app:imageUrl="@{categorybean.imageUrl}" />
+            app:imageUrl="@{bean.imageUrl}" />
         </RelativeLayout>
 
         <View

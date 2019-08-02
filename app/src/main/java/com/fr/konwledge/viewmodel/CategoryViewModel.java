@@ -1,11 +1,11 @@
 package com.fr.konwledge.viewmodel;
 
 import com.fr.konwledge.base.BaseLoadListener;
-import com.fr.konwledge.bean.CategoryListBean.ResultsBean;
+import com.fr.konwledge.bean.TestBean;
 import com.fr.konwledge.constant.MainConstant;
 import com.fr.konwledge.model.CategoryModel;
 import com.fr.konwledge.view.IView.ICategoryView;
-import com.fr.konwledge.view.adapter.RVCategoryAdapter;
+import com.fr.konwledge.view.adapter.RVBeanAdapter;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import java.util.List;
  * 作者：范瑞
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
-public class CategoryViewModel extends BaseViewModel<RVCategoryAdapter> implements BaseLoadListener<ResultsBean> {
+public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements BaseLoadListener<TestBean> {
 
     private ICategoryView mICategoryView;
     private String mCategory;
     private int mCurrPage = 1; //当前页面
     private int mLoadType; //加载数据的类型
 
-    public CategoryViewModel(ICategoryView iCategoryView,RVCategoryAdapter adapter,String category) {
+    public CategoryViewModel(ICategoryView iCategoryView, RVBeanAdapter adapter, String category) {
         super(adapter);
         this.mICategoryView = iCategoryView;
         this.mCategory = category;
@@ -51,7 +51,7 @@ public class CategoryViewModel extends BaseViewModel<RVCategoryAdapter> implemen
     }
 
     @Override
-    public void loadSuccess(List<ResultsBean> list) {
+    public void loadSuccess(List<TestBean> list) {
         if (mCurrPage > 1){
             //上拉加载的数据
             adapter.loadMoreData(list);

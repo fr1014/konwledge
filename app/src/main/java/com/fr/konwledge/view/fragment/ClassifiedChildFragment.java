@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fr.konwledge.R;
 import com.fr.konwledge.base.BaseFragment;
-import com.fr.konwledge.bean.CategoryBean;
+import com.fr.konwledge.model.BeanModel;
 import com.fr.konwledge.databinding.FragmentClassifiedChildBinding;
 import com.fr.konwledge.utils.DialogHelper;
 import com.fr.konwledge.utils.Utils;
 import com.fr.konwledge.view.IView.ICategoryView;
-import com.fr.konwledge.view.adapter.RVCategoryAdapter;
+import com.fr.konwledge.view.adapter.RVBeanAdapter;
 import com.fr.konwledge.view.listener.OnItemClickListener;
 import com.fr.konwledge.viewmodel.CategoryViewModel;
 import com.fr.konwledge.webview.H5WebActivity;
@@ -23,7 +23,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
-public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<CategoryBean> {
+public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
     private String mClassified;
     private CategoryViewModel viewModel;
 
@@ -46,7 +46,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.recyclerView.setLayoutManager(layoutManager);
 
-        RVCategoryAdapter mRVCategoryAdapter = new RVCategoryAdapter(getContext());
+        RVBeanAdapter mRVCategoryAdapter = new RVBeanAdapter(getContext());
         binding.recyclerView.setAdapter(mRVCategoryAdapter);
         viewModel = new CategoryViewModel(this, mRVCategoryAdapter, mClassified);
 
@@ -88,7 +88,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     }
 
     @Override
-    public void onItemClickClick(View view, CategoryBean bean) {
+    public void onItemClickClick(View view, BeanModel bean) {
         Bundle bundle = new Bundle();
         bundle.putString("url", bean.getUrl());
         bundle.putString("title", bean.getDesc());

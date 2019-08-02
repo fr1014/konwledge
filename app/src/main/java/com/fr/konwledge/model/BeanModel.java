@@ -1,25 +1,30 @@
-package com.fr.konwledge.bean;
+package com.fr.konwledge.model;
 
 import android.view.View;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.ObservableField;
 
+import com.fr.konwledge.bean.TestBean;
 import com.fr.konwledge.utils.Utils;
 
 import java.util.Date;
 import java.util.List;
-import com.fr.konwledge.bean.TodayListBean.ResultsBean.Bean;
 
-public class TodayBean extends BaseObservable {
-    private Bean bean;
+/**
+ * 创建时间：2019/7/19
+ * 作者：范瑞
+ * 博客：https://www.jianshu.com/u/408f3c1b46a9
+ */
+public class BeanModel extends BaseObservable {
+    private TestBean bean;
     public ObservableField<Integer> imageViewVisibility;
     private int mPosition;
 
-    public TodayBean(Bean bean, int position) {
+    public BeanModel(TestBean bean, int position) {
         this.bean = bean;
         this.mPosition = position;
         initData();
-
     }
 
     public String getDesc() {
@@ -35,7 +40,7 @@ public class TodayBean extends BaseObservable {
             return bean.getImages().get(0);
         else
             imageViewVisibility.set(View.GONE);
-            return null;
+        return null;
     }
 
     public Date getDate(){

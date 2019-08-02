@@ -1,6 +1,7 @@
 package com.fr.konwledge.network.request;
 
 import com.fr.konwledge.bean.CategoryListBean;
+import com.fr.konwledge.bean.TestBean;
 import com.fr.konwledge.bean.TodayListBean;
 
 import io.reactivex.Observable;
@@ -17,9 +18,9 @@ public interface Request {
 
     //获取最新干货
     @GET("today")
-    Observable<Response<TodayListBean>> getTodayBean();
+    Observable<Response<TodayListBean<TestBean>>> getTodayBean();
 
     //获取分类干货
     @GET("data/{category}/{count}/{page}")
-    Observable<Response<CategoryListBean>> getCategoryBean(@Path("category")String category, @Path("count") int count, @Path("page") int page);
+    Observable<Response<CategoryListBean<TestBean>>> getCategoryBean(@Path("category")String category, @Path("count") int count, @Path("page") int page);
 }
