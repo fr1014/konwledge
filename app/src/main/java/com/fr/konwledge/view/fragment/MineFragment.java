@@ -22,10 +22,14 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     }
 
     @Override
+    protected void initView() {
+        initClick();
+    }
+
+    @Override
     public void initData() {
         userModel = new UserModel();
         binding.setVariable(BR.userbean, userModel.getCurUserInfo());
-        initClick();
     }
 
     private void initClick() {

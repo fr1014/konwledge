@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fr.konwledge.R;
 import com.fr.konwledge.base.BaseFragment;
+import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.model.BeanModel;
 import com.fr.konwledge.databinding.FragmentClassifiedChildBinding;
 import com.fr.konwledge.utils.DialogHelper;
@@ -21,11 +25,15 @@ import com.fr.konwledge.webview.H5WebActivity;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.List;
+
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
 
 public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
     private String mClassified;
     private CategoryViewModel viewModel;
+    private RVBeanAdapter mAdapter;
+    private XRecyclerView mXRecyclerView;
 
     public ClassifiedChildFragment(String classified){
         this.mClassified = classified;
@@ -37,20 +45,55 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     }
 
     @Override
-    public void initData() {
-        binding.recyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotate); //设置下拉刷新的样式
-        binding.recyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate); //设置上拉加载更多的样式
-        binding.recyclerView.setArrowImageView(R.mipmap.pull_down_arrow);
-        binding.recyclerView.setLoadingListener(this);
+    protected void initView() {
+        mXRecyclerView = binding.recyclerView;
+        mXRecyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotate); //设置下拉刷新的样式
+        mXRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate); //设置上拉加载更多的样式
+        mXRecyclerView.setArrowImageView(R.mipmap.pull_down_arrow);
+        mXRecyclerView.setLoadingListener(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        binding.recyclerView.setLayoutManager(layoutManager);
+        mXRecyclerView.setLayoutManager(layoutManager);
 
-        RVBeanAdapter mRVCategoryAdapter = new RVBeanAdapter(getContext());
-        binding.recyclerView.setAdapter(mRVCategoryAdapter);
-        viewModel = new CategoryViewModel(this, mRVCategoryAdapter, mClassified);
+        mAdapter = new RVBeanAdapter(getContext());
+        mXRecyclerView.setAdapter(mAdapter);
 
-        mRVCategoryAdapter.setOnItemClickListener(this);
+        mAdapter.setOnItemClickListener(this);
+    }
+
+    public void initRecyclerViewAnim(List<ItemBean> list) {
+        initAnim();
+        if (list != null && list.size() > 0) {
+            if (mAdapter == null) {
+                mAdapter = new RVBeanAdapter(getActivity());
+                mAdapter.setOnItemClickListener(this);
+                getActivity().runOnUiThread(() -> {
+                    mXRecyclerView.setAdapter(mAdapter);
+                    mAdapter.refreshData(list);
+                });
+            } else{
+                getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
+            }
+        }
+    }
+
+    //RecyclerView动画
+    private void initAnim() {
+        //通过加载XML动画设置文件来创建一个Animation对象；
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.item_anim);
+        //得到一个LayoutAnimationController对象；
+        LayoutAnimationController lac = new LayoutAnimationController(animation);
+        //设置控件显示的顺序；
+        lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        //设置控件显示间隔时间；
+        lac.setDelay(0.3f);
+        //为ListView设置LayoutAnimationController属性；
+        mXRecyclerView.setLayoutAnimation(lac);
+    }
+
+    @Override
+    public void initData() {
+        viewModel = new CategoryViewModel(this,this, mAdapter, mClassified);
     }
 
     @Override

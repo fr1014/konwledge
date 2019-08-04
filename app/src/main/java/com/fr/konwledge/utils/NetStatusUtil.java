@@ -1,4 +1,4 @@
-package com.fr.konwledge.webview;
+package com.fr.konwledge.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -1,11 +1,16 @@
 package com.fr.konwledge.viewmodel;
 
+import android.content.Context;
+
+import androidx.fragment.app.Fragment;
+
 import com.fr.konwledge.base.BaseLoadListener;
 import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.constant.MainConstant;
 import com.fr.konwledge.model.TodayModel;
 import com.fr.konwledge.view.IView.ITodayView;
 import com.fr.konwledge.view.adapter.RVBeanAdapter;
+import com.fr.konwledge.view.fragment.TodayFragment;
 
 import java.util.List;
 
@@ -15,9 +20,11 @@ public class TodayViewModel extends BaseViewModel<RVBeanAdapter> implements Base
 
     private ITodayView mITodayView;
     private int mLoadType;
+    private TodayFragment mTodayFragment;
 
-    public TodayViewModel(ITodayView iTodayView, RVBeanAdapter adapter) {
+    public TodayViewModel(Fragment fragment,ITodayView iTodayView, RVBeanAdapter adapter) {
         super(adapter);
+        this.mTodayFragment = (TodayFragment) fragment;
         this.mITodayView = iTodayView;
         getData();
     }
@@ -36,7 +43,7 @@ public class TodayViewModel extends BaseViewModel<RVBeanAdapter> implements Base
 
     @Override
     public void loadSuccess(List<ItemBean> list) {
-        adapter.refreshData(list);
+        mTodayFragment.initRecyclerViewAnim(list);
     }
 
     @Override

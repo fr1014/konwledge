@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.fr.konwledge.application.BaseApplication;
 import com.fr.konwledge.network.request.Request;
-import com.fr.konwledge.webview.NetStatusUtil;
+import com.fr.konwledge.utils.NetStatusUtil;
 
 import org.jetbrains.annotations.NotNull;
 

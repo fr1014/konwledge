@@ -2,6 +2,7 @@ package com.fr.konwledge.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Handler;
 
 /**
  * 创建时间：2019/7/20
@@ -36,15 +37,7 @@ public class DialogHelper {
      */
     public void close() {
         if (progressDialog != null && progressDialog.isShowing()) {
-            Thread t = new Thread(() -> {
-                try {
-                    Thread.sleep(200);//显示200毫秒后，取消ProgressDialog
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
-            });
-            t.start();
+            new Handler().postDelayed(() -> progressDialog.dismiss(), 300);
         }
     }
 

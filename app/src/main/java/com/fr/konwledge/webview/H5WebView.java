@@ -2,26 +2,18 @@ package com.fr.konwledge.webview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.fr.konwledge.utils.Utils;
+import com.fr.konwledge.utils.NetStatusUtil;
 
 import java.io.File;
-import java.net.URISyntaxException;
-import java.util.List;
 
 public class H5WebView extends WebView {
     private Context mContext;

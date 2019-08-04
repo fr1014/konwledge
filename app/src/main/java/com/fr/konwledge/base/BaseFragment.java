@@ -27,6 +27,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment{
         if (mView == null){
             binding = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
             mView = binding.getRoot();
+            initView();
             isViewCreated = true;
             tryLoadData();
         }else {
@@ -39,9 +40,11 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment{
         return mView;
     }
 
-    public abstract void initData();
+    protected abstract void initView();
 
-    public abstract int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+    protected abstract void initData();
+
+    protected abstract int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
     /**
      * 跳转页面

@@ -34,7 +34,7 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
     }
 
     @Override
-    public void initData() {
+    protected void initView() {
         mTabLayout = binding.tabs;
         mViewPager = binding.viewpager;
         mTitles = new ArrayList<>();
@@ -55,6 +55,11 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
         mFragmentAdapter = new FragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mFragments, mTitles);
         mViewPager.setAdapter(mFragmentAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public void initData() {
+
     }
 
 }
