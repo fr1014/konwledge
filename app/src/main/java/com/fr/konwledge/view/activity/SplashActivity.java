@@ -34,15 +34,16 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
         mTextView = binding.tv;
         mTextView.setOnClickListener(this);
         mUserViewModel = new UserViewModel();
-        timer.schedule(task, 1000, 1000);     //等待1秒，停顿时间1秒，点击跳过逻辑
+        timer.schedule(task, 1000,1000);     //等待1秒，每停顿1秒执行task
 
         //正常情况下不点击跳过
         mHandler = new Handler();
 
         //从闪屏页跳转到登录界面或首页
-        mHandler.postDelayed(mRunnable = () -> startActivity(), DELAYMILLIS);
+        mHandler.postDelayed(mRunnable = this::startActivity, DELAYMILLIS);
     }
 
+    // TimerTask类表示一个在指定时间内执行的task
     private TimerTask task = new TimerTask() {
         @Override
         public void run() {
@@ -83,7 +84,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
         } else {
             startActivity(LoginActivity.class);
         }
-        finish();
+        SplashActivity.this.finish();
     }
 
 }
