@@ -1,0 +1,89 @@
+package com.fr.konwledge.view.activity;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.fr.konwledge.R;
+import com.fr.konwledge.base.BaseActivity;
+import com.fr.konwledge.databinding.ActivitySplashBinding;
+import com.fr.konwledge.viewmodel.UserViewModel;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class SplashActivity extends BaseActivity<ActivitySplashBinding> implements View.OnClickListener {
+
+    private int recLen = 3; //倒计时提示为3秒
+    private static final long DELAYMILLIS = 2000;
+    private TextView mTextView;
+    Timer timer = new Timer();
+    private Handler mHandler;
+    private Runnable mRunnable;
+    private UserViewModel mUserViewModel;
+
+    @Override
+    protected void initData() {
+        //定义全屏参数
+        int flag= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        //设置当前窗体为全屏显示
+        getWindow().setFlags(flag, flag);
+
+        mTextView = binding.tv;
+        mTextView.setOnClickListener(this);
+        mUserViewModel = new UserViewModel();
+        timer.schedule(task, 1000, 1000);     //等待1秒，停顿时间1秒，点击跳过逻辑
+
+        //正常情况下不点击跳过
+        mHandler = new Handler();
+
+        //从闪屏页跳转到登录界面或首页
+        mHandler.postDelayed(mRunnable = () -> startActivity(), DELAYMILLIS);
+    }
+
+    private TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            runOnUiThread(() -> {       //在UI线程中进行
+                recLen--;
+                mTextView.setText("点击跳过" + recLen);
+                if (recLen < 0) {
+                    timer.cancel();
+                    mTextView.setVisibility(View.GONE);
+                }
+            });
+        }
+    };
+
+    @Override
+    public int initContentView(Bundle savedInstanceState) {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv:
+                startActivity();
+                if (mRunnable != null){
+                    mHandler.removeCallbacks(mRunnable);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void startActivity() {
+        //判断是否为登录状态
+        if (mUserViewModel.getUserInfo() != null) {
+            startActivity(MainActivity.class);
+        } else {
+            startActivity(LoginActivity.class);
+        }
+        finish();
+    }
+
+}

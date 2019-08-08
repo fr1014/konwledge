@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FBFDFC</color>
-    <color name="colorPrimaryDark">#86D6F5</color>
+    <color name="colorPrimaryDark">#CFDDE9</color>
     <color name="colorAccent">#FBFDFC</color>
     <color name="tabs_class">#00BCD4</color>
     <color name="selected_text">#ff000000</color>
@@ -11,7 +11,6 @@
     <color name="text_title">#FAF5F5</color>
     <color name="white">#fff</color>
     <color name="qq_blue">#39a3cc</color>
-    <color name="login_bg">#86D6F5</color>
     <color name="logo_bg">#659C9A9A</color>
     <color name="white_translucent_light">#66FFFFFF</color>
     <color name="white_translucent_dark">#99FFFFFF</color>

@@ -23,12 +23,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         initClick();
         mUserViewModel = new UserViewModel();
         mUserViewModel.setCallBackListener(this);
-
-        //判断是否为登录状态
-        if (mUserViewModel.getUserInfo() != null) {
-            startActivity(MainActivity.class);
-            finish();
-        }
     }
 
     private void initClick() {
