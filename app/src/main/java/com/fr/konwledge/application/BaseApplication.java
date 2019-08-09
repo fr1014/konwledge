@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.fr.konwledge.BuildConfig;
-import com.fr.konwledge.network.RetrofitManager;
+import com.fr.konwledge.network.http.RetrofitManager;
 import com.mob.MobSDK;
 
 public class BaseApplication extends Application {

@@ -1,4 +1,4 @@
-package com.fr.konwledge.network.request;
+package com.fr.konwledge.network.http.request;
 
 import com.fr.konwledge.bean.CategoryListBean;
 import com.fr.konwledge.bean.ItemBean;

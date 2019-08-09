@@ -3,8 +3,8 @@ package com.fr.konwledge.model;
 import com.fr.konwledge.base.BaseLoadListener;
 import com.fr.konwledge.bean.ItemBean;
 import com.fr.konwledge.bean.TodayListBean;
-import com.fr.konwledge.network.RetrofitManager;
-import com.fr.konwledge.network.schedulers.SchedulerProvider;
+import com.fr.konwledge.network.http.RetrofitManager;
+import com.fr.konwledge.network.http.schedulers.SchedulerProvider;
 
 import java.util.ArrayList;
 import java.util.List;

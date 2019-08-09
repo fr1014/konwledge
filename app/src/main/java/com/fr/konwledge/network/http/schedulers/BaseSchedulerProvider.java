@@ -1,4 +1,4 @@
-package com.fr.konwledge.network.schedulers;
+package com.fr.konwledge.network.http.schedulers;
 
 import io.reactivex.ObservableTransformer;
 import io.reactivex.Scheduler;

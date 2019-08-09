@@ -10,6 +10,7 @@ import java.io.Serializable;
  * 版本更新实体类
  */
 public class VersionInfo implements Serializable {
+
     private String downloadUrl;
     private Integer versionCode;
     private String versionName;
@@ -46,4 +47,6 @@ public class VersionInfo implements Serializable {
     public void setUpdateMessage(String updateMessage) {
         this.updateMessage = updateMessage;
     }
+
+
 }

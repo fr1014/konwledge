@@ -16,6 +16,8 @@ import com.fr.konwledge.model.UserModel;
 import com.fr.konwledge.network.download.httpdowonload.DownInfo;
 import com.fr.konwledge.network.download.httpdowonload.HttpDownManager;
 import com.fr.konwledge.network.download.listener.HttpProgressOnNextListener;
+import com.fr.konwledge.network.version_update.utils.UpdateChecker;
+import com.fr.konwledge.utils.DialogHelper;
 import com.fr.konwledge.view.activity.LoginActivity;
 
 import java.io.File;
@@ -24,6 +26,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     private UserModel userModel;
     private ProgressBar mProgressBar;
     private DownInfo mDownInfo;
+    private ProgressDialog dialog;
 
 
     public static Fragment getInstance() {
@@ -33,13 +36,15 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     @Override
     protected void initView() {
         initClick();
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage(getString(R.string.android_auto_update_dialog_checking));
     }
 
     @Override
     public void initData() {
         userModel = new UserModel();
         binding.setVariable(BR.userbean, userModel.getCurUserInfo());
-        updateInfo();
+//        updateInfo();
     }
 
     private void initClick() {
@@ -51,7 +56,8 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                     this.getActivity().finish();
                     break;
                 case R.id.update:
-                    update();
+                    UpdateChecker.checkForDialog(getContext(),dialog);
+//                    update();
                     break;
             }
         });

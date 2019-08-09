@@ -1,9 +1,9 @@
-package com.fr.konwledge.network;
+package com.fr.konwledge.network.http;
 
 import android.util.Log;
 
 import com.fr.konwledge.application.BaseApplication;
-import com.fr.konwledge.network.request.Request;
+import com.fr.konwledge.network.http.request.Request;
 import com.fr.konwledge.utils.NetStatusUtil;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +46,7 @@ public class RetrofitManager {
      */
     public void init(boolean isDebug) {
         retrofit = new Retrofit.Builder()
-                .baseUrl(com.fr.konwledge.network.request.Request.BASE_URL)
+                .baseUrl(com.fr.konwledge.network.http.request.Request.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(createOkHttpClient(isDebug))
