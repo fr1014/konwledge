@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -28,6 +25,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.List;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
+import static com.fr.konwledge.view.anim.anims.initRVAnim;
 
 public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
     private String mClassified;
@@ -62,7 +60,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     }
 
     public void initRecyclerViewAnim(List<ItemBean> list) {
-        initAnim();
+        initRVAnim(getContext(),mXRecyclerView);
         if (list != null && list.size() > 0) {
             if (mAdapter == null) {
                 mAdapter = new RVBeanAdapter(getActivity());
@@ -75,20 +73,6 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
                 getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
             }
         }
-    }
-
-    //RecyclerView动画
-    private void initAnim() {
-        //通过加载XML动画设置文件来创建一个Animation对象；
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.item_anim);
-        //得到一个LayoutAnimationController对象；
-        LayoutAnimationController lac = new LayoutAnimationController(animation);
-        //设置控件显示的顺序；
-        lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
-        //设置控件显示间隔时间；
-        lac.setDelay(0.3f);
-        //为ListView设置LayoutAnimationController属性；
-        mXRecyclerView.setLayoutAnimation(lac);
     }
 
     @Override

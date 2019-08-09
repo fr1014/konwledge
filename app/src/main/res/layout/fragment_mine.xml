@@ -93,6 +93,8 @@
             android:layout_height="wrap_content"
             custom:show_bottom_line="true"
             custom:show_left_img="@drawable/ic_update"
+            android:id="@+id/update"
+            android:onClick="@{onClickListener}"
             custom:show_text="版本更新" />
 
         <com.fr.konwledge.view.customview.Item_view

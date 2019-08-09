@@ -1,7 +1,5 @@
 package com.fr.konwledge.view.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.os.Bundle;
 
 import com.fr.konwledge.R;
@@ -11,15 +9,14 @@ import com.fr.konwledge.utils.Utils;
 import com.fr.konwledge.view.listener.CallBackListener;
 import com.fr.konwledge.viewmodel.UserViewModel;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import static com.fr.konwledge.view.anim.anims.initAnimator;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements CallBackListener {
-    private CircleImageView mIcon;
     private UserViewModel mUserViewModel;
 
     @Override
     protected void initData() {
-        initAnimator();
+        initAnimator(this,binding.icon);
         initClick();
         mUserViewModel = new UserViewModel();
         mUserViewModel.setCallBackListener(this);
@@ -37,13 +34,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
                     break;
             }
         });
-    }
-
-    private void initAnimator() {
-        mIcon = binding.icon;
-        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.rotation);
-        animator.setTarget(mIcon);
-        animator.start();
     }
 
     @Override

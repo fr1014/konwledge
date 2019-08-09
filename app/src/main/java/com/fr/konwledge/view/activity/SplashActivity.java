@@ -14,10 +14,12 @@ import com.fr.konwledge.viewmodel.UserViewModel;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.fr.konwledge.view.anim.anims.initScaleAnim;
+
 public class SplashActivity extends BaseActivity<ActivitySplashBinding> implements View.OnClickListener {
 
     private int recLen = 3; //倒计时提示为3秒
-    private static final long DELAYMILLIS = 2000;
+    private static final long DELAYMILLIS = 3000;
     private TextView mTextView;
     Timer timer = new Timer();
     private Handler mHandler;
@@ -33,14 +35,18 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
 
         mTextView = binding.tv;
         mTextView.setOnClickListener(this);
+
         mUserViewModel = new UserViewModel();
+
+        initScaleAnim(this,binding.icon);
+
         timer.schedule(task, 1000,1000);     //等待1秒，每停顿1秒执行task
 
         //正常情况下不点击跳过
         mHandler = new Handler();
 
         //从闪屏页跳转到登录界面或首页
-        mHandler.postDelayed(mRunnable = this::startActivity, DELAYMILLIS);
+        mHandler.postDelayed(mRunnable = () -> startActivity(), DELAYMILLIS);
     }
 
     // TimerTask类表示一个在指定时间内执行的task
@@ -69,6 +75,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
             case R.id.tv:
                 startActivity();
                 if (mRunnable != null){
+                    //防止内存泄漏
                     mHandler.removeCallbacks(mRunnable);
                 }
                 break;

@@ -3,16 +3,11 @@ package com.fr.konwledge.view.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.fr.konwledge.R;
 import com.fr.konwledge.bean.ItemBean;
@@ -32,6 +27,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.List;
 
 import static com.fr.konwledge.constant.MainConstant.LoadData.FIRST_LOAD;
+import static com.fr.konwledge.view.anim.anims.initRVAnim;
 
 public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView<ItemBean>, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
 
@@ -60,7 +56,7 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
     }
 
     public void initRecyclerViewAnim(List<ItemBean> list) {
-        initAnim();
+        initRVAnim(getContext(),mXRecyclerView);
         if (list != null && list.size() > 0) {
             if (mAdapter == null) {
                 mAdapter = new RVBeanAdapter(getActivity());
@@ -73,20 +69,6 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
                 getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
             }
         }
-    }
-
-    //RecyclerView动画
-    private void initAnim() {
-        //通过加载XML动画设置文件来创建一个Animation对象；
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.item_anim);
-        //得到一个LayoutAnimationController对象；
-        LayoutAnimationController lac = new LayoutAnimationController(animation);
-        //设置控件显示的顺序；
-        lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
-        //设置控件显示间隔时间；
-        lac.setDelay(0.3f);
-        //为ListView设置LayoutAnimationController属性；
-        mXRecyclerView.setLayoutAnimation(lac);
     }
 
     @Override
