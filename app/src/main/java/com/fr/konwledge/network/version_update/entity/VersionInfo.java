@@ -11,8 +11,15 @@ import java.io.Serializable;
  */
 public class VersionInfo implements Serializable {
 
+    /**
+     * downloadUrl : app-release.apk
+     * versionCode : 1
+     * versionName : 1.0
+     * updateMessage :
+     */
+
     private String downloadUrl;
-    private Integer versionCode;
+    private int versionCode;
     private String versionName;
     private String updateMessage;
 
@@ -24,11 +31,11 @@ public class VersionInfo implements Serializable {
         this.downloadUrl = downloadUrl;
     }
 
-    public Integer getVersionCode() {
+    public int getVersionCode() {
         return versionCode;
     }
 
-    public void setVersionCode(Integer versionCode) {
+    public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
     }
 
@@ -47,6 +54,4 @@ public class VersionInfo implements Serializable {
     public void setUpdateMessage(String updateMessage) {
         this.updateMessage = updateMessage;
     }
-
-
 }
