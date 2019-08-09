@@ -7,5 +7,5 @@ package com.fr.konwledge.network.version_update.utils;
  */
 public class Constants {
     public static final String APK_DOWNLOAD_URL = "app-release.apk";
-    public static final String UPDATE_URL = "output.json";
+    public static final String UPDATE_URL = "version.json";
 }
