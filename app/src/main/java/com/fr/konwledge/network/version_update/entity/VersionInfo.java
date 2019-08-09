@@ -15,7 +15,7 @@ public class VersionInfo implements Serializable {
      * downloadUrl : app-release.apk
      * versionCode : 1
      * versionName : 1.0
-     * updateMessage :
+     * updateMessage : test
      */
 
     private String downloadUrl;

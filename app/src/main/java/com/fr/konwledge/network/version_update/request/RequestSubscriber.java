@@ -1,6 +1,7 @@
 package com.fr.konwledge.network.version_update.request;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -44,6 +45,7 @@ public abstract class RequestSubscriber<T> implements Observer<T> {
         onSuccess(t);
     }
 
+    private static final String TAG = "RequestSubscriber";
     @Override
     public void onError(Throwable e) {
         String msg;
@@ -52,6 +54,7 @@ public abstract class RequestSubscriber<T> implements Observer<T> {
         } else if (e instanceof ConnectException) {
             msg = "请求超时。请稍后重试！";
         } else {
+            Log.d(TAG, "onError: "+ e);
             msg = "请求未能成功，请稍后重试！";
         }
         if (!TextUtils.isEmpty(msg)) {

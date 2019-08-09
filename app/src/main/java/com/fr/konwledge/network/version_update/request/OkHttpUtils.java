@@ -31,7 +31,7 @@ public class OkHttpUtils {
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://github.com/fr1014/konwledge/blob/master/app/release/")
+                    .baseUrl("https://raw.githubusercontent.com/fr1014/konwledge/master/app/release/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(getOkHttpClient())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
