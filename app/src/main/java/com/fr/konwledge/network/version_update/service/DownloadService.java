@@ -45,7 +45,7 @@ public class DownloadService extends Service {
         File dir = StorageUtils.getExternalCacheCustomDirectory(this);
         //File dir = StorageUtils.getExternalCacheDirectory(this);
         //File dir = StorageUtils.getCacheDirectory(this);
-        String apkName = urlStr.substring(urlStr.lastIndexOf("/") + 1, urlStr.length());
+        String apkName = urlStr.substring(urlStr.lastIndexOf("/") + 1);
         File apkFile = new File(dir, apkName);
         downInfo.setSavePath(apkFile.getAbsolutePath());
         downLoadFile();
