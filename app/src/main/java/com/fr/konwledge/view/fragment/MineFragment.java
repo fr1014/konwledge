@@ -17,7 +17,6 @@ import com.fr.konwledge.network.download.httpdowonload.DownInfo;
 import com.fr.konwledge.network.download.httpdowonload.HttpDownManager;
 import com.fr.konwledge.network.download.listener.HttpProgressOnNextListener;
 import com.fr.konwledge.network.version_update.utils.UpdateChecker;
-import com.fr.konwledge.utils.DialogHelper;
 import com.fr.konwledge.view.activity.LoginActivity;
 
 import java.io.File;
