@@ -30,3 +30,6 @@ Api地址：http://gank.io/api
 - 圆形图片[CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
 ## 版本更新
+#### 版本1.1
+- 加入RecyclerView入场动画
+- 加入检查更新功能
