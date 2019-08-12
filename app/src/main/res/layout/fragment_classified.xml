@@ -16,7 +16,7 @@
             app:tabSelectedTextColor="@color/selected_text"
             app:tabTextColor="@color/unselected_text" />
 
-        <androidx.viewpager.widget.ViewPager
+        <com.fr.konwledge.view.customview.CustomScrollViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
