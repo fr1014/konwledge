@@ -1,5 +1,6 @@
 package com.fr.konwledge.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +11,21 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.fr.konwledge.R;
+import com.fr.konwledge.utils.SystemUtil;
 
 public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatActivity {
 
     protected V binding;
     protected Context mContext;
-    
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+
+        SystemUtil.setStatusBarCharacterDarkColor(this);
+
         mContext = this;
         //初始化DataBinding和ViewModel方法
         initViewDataBinding(savedInstanceState);
