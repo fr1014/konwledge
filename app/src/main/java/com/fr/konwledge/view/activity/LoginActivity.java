@@ -1,6 +1,7 @@
 package com.fr.konwledge.view.activity;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.fr.konwledge.R;
 import com.fr.konwledge.base.BaseActivity;
@@ -16,7 +17,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
 
     @Override
     protected void initData() {
-        initAnimator(this,binding.icon);
+        //定义全屏参数
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        //设置当前窗体为全屏显示
+        getWindow().setFlags(flag, flag);
+
+        initAnimator(this, binding.icon);
         initClick();
         mUserViewModel = new UserViewModel();
         mUserViewModel.setCallBackListener(this);
