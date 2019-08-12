@@ -61,5 +61,4 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
     public void initData() {
 
     }
-
 }
