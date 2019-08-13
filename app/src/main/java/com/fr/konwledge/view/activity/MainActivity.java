@@ -3,6 +3,7 @@ package com.fr.konwledge.view.activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -53,18 +54,37 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     protected long exitTime; //记录第一次点击的时间
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
-            if (System.currentTimeMillis() - exitTime > 2000){
-                Utils.ToastShort(this,"再按一次退出程序！");
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - exitTime > 2000) {
+                Utils.ToastShort(this, "再按一次退出程序！");
                 exitTime = System.currentTimeMillis();
-            }else {
+            } else {
                 MainActivity.this.finish();
                 System.exit(0);
             }
-           return true;
+            return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    //Fragment中无法回调onRequestPermissionsResult
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 获取到Activity下的Fragment
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        if (fragments == null) {
+            return;
+        }
+        // 查找在Fragment中onRequestPermissionsResult方法并调用
+        for (Fragment fragment : fragments) {
+            if (fragment != null) {
+                // 这里就会调用我们Fragment中的onRequestPermissionsResult方法
+                fragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
     }
 }

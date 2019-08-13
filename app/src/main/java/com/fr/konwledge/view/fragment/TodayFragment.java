@@ -95,14 +95,12 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
     @Override
     public void loadComplete() {
         DialogHelper.getInstance().close();
-        mXRecyclerView.loadMoreComplete();
         mXRecyclerView.refreshComplete();
     }
 
     @Override
     public void loadFailure(String message) {
         DialogHelper.getInstance().close();
-        mXRecyclerView.loadMoreComplete();
         mXRecyclerView.refreshComplete();
         Utils.ToastShort(getContext(), message);
     }

@@ -1,5 +1,6 @@
 package com.fr.konwledge.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment{
     private boolean isViewCreated; // 界面是否已创建完成
     private boolean isVisibleToUser; // 是否对用户可见
     private boolean isDataLoaded; // 数据是否已请求, isNeedReload()返回false的时起作用
+    protected Context mContext;
 
     @Nullable
     @Override
@@ -27,6 +29,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment{
         if (mView == null){
             binding = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
             mView = binding.getRoot();
+            mContext = getActivity();
             initView();
             isViewCreated = true;
             tryLoadData();

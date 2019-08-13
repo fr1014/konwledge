@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fr.konwledge.view.listener.OnItemClickListener;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +33,13 @@ public abstract class RVBaseAdapter<T, B, VH extends RecyclerView.ViewHolder> ex
         return mList.size();
     }
 
-    @NotNull
     @Override
-    public VH onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         return onCreateVH(parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(@NotNull VH holder, int position) {
+    public void onBindViewHolder(VH holder, int position) {
         onBindVH(holder, position);
     }
 
