@@ -9,109 +9,122 @@
         <variable
             name="onClickListener"
             type="android.view.View.OnClickListener" />
+
         <variable
             name="userbean"
             type="com.fr.konwledge.bean.UserBean" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RelativeLayout
+        android:layout_height="match_parent">
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_blur"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:head_imageUrl="@{userbean.headImageUrl}" />
+        </FrameLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_head"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_centerInParent="true"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"
-                app:imageUrl="@{userbean.headImageUrl}" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/iv_blur"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:layout_height="300dp">
 
-                <ImageView
-                    android:id="@+id/user_line"
-                    android:layout_width="1dp"
-                    android:layout_height="25dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="15dp"
-                    android:background="@color/white" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerInParent="true"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:imageUrl="@{userbean.headImageUrl}" />
 
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/user_line"
-                    android:text="@{userbean.name}"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:layout_below="@id/iv_head"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/user_val"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@id/user_line"
-                    android:text="@{userbean.gender}"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    <ImageView
+                        android:id="@+id/user_line"
+                        android:layout_width="1dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="15dp"
+                        android:background="@color/text_color" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@id/user_line"
+                        android:text="@{userbean.name}"
+                        android:textColor="@color/text_color"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/user_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/user_line"
+                        android:text="@{userbean.gender}"
+                        android:textColor="@color/text_color"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+
             </RelativeLayout>
 
-        </RelativeLayout>
-        <com.fr.konwledge.view.customview.Item_view
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            custom:show_bottom_line="true"
-            custom:show_left_img="@drawable/ic_favorite_red"
-            custom:show_text="我的收藏" />
+            <com.fr.konwledge.view.customview.Item_view
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:show_bottom_line="true"
+                custom:show_left_img="@drawable/ic_favorite_red"
+                custom:show_text="我的收藏" />
 
-        <!--app:show_leftimg="@drawable/lishi"-->
-        <com.fr.konwledge.view.customview.Item_view
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            custom:show_bottom_line="true"
-            custom:show_text="历史记录" />
+            <!--app:show_leftimg="@drawable/lishi"-->
+            <com.fr.konwledge.view.customview.Item_view
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:show_bottom_line="true"
+                custom:show_text="历史记录" />
 
-        <com.fr.konwledge.view.customview.Item_view
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            custom:show_bottom_line="true"
-            custom:show_left_img="@drawable/ic_update"
-            android:id="@+id/update"
-            android:onClick="@{onClickListener}"
-            custom:show_text="版本更新" />
+            <com.fr.konwledge.view.customview.Item_view
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{onClickListener}"
+                custom:show_bottom_line="true"
+                custom:show_left_img="@drawable/ic_update"
+                custom:show_text="版本更新" />
 
-        <com.fr.konwledge.view.customview.Item_view
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            custom:show_bottom_line="true"
-            custom:show_left_img="@drawable/ic_update"
-            custom:show_text="关于" />
+            <com.fr.konwledge.view.customview.Item_view
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                custom:show_bottom_line="true"
+                custom:show_left_img="@drawable/ic_update"
+                custom:show_text="关于" />
 
-        <!--app:show_leftimg="@drawable/about"-->
-        <com.fr.konwledge.view.customview.Item_view
-            android:id="@+id/out_login"
-            android:onClick="@{onClickListener}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            custom:show_bottom_line="false"
-            custom:show_text="退出登录" />
-    </LinearLayout>
+            <!--app:show_leftimg="@drawable/about"-->
+            <com.fr.konwledge.view.customview.Item_view
+                android:id="@+id/out_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{onClickListener}"
+                custom:show_bottom_line="false"
+                custom:show_text="退出登录" />
+        </LinearLayout>
+    </FrameLayout>
 </layout>
