@@ -20,17 +20,11 @@ public class DownInfo {
     private long readLength;
     //下载唯一的HttpService
     private HttpService service;
-    //回调监听
-//private HttpProgressOnNextListener listener;
-//超时设置
+
+    //超时设置
     private int DEFAULT_TIMEOUT = 6;
     //下载状态
     private DownState state;
-//public DownInfo(String url,HttpProgressOnNextListener listener) {
-//setUrl(url);
-//setBaseUrl(getBasUrl(url));
-// setListener(listener);
-//}
 
     public DownState getState() {
         return state;
@@ -56,14 +50,6 @@ public class DownInfo {
     public void setConnectionTime(int DEFAULT_TIMEOUT) {
         this.DEFAULT_TIMEOUT = DEFAULT_TIMEOUT;
     }
-
-//public HttpProgressOnNextListener getListener() {
-//return listener;
-//}
-//
-//public void setListener(HttpProgressOnNextListener listener) {
-//this.listener = listener;
-//}
 
     public HttpService getService() {
         return service;
@@ -135,7 +121,7 @@ public class DownInfo {
     /**
      * 下载状态
      */
-    public enum  DownState {
+    public enum DownState {
         START,
         DOWN,
         PAUSE,

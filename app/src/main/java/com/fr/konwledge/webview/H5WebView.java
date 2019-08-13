@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
+import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -135,4 +137,20 @@ public class H5WebView extends WebView {
         //=========多窗口的问题==========================================================
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.canGoBack()) {
+            this.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //利用浏览器下载文件
+    public class MyDownload implements DownloadListener{
+
+        @Override
+        public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimeType, long contentLength) {
+
+        }
+    }
 }

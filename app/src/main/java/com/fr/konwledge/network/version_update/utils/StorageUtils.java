@@ -11,12 +11,6 @@ import java.io.File;
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
 public class StorageUtils {
-    /*
-     * context.getCacheDir()和context.getExternalCacheDir()
-     * 目录的路径不同。
-     * 前者的目录存在外部SD卡上的。在手机里可以直接看到
-     * 后者的目录存在app的内部存储上，需要root以后，用Root Explorer 文件管理器才能看到
-     */
 
     /**
      * 获取应用的缓存目录
@@ -44,17 +38,17 @@ public class StorageUtils {
 
     /**
      * 在cache下新增自定义缓存路径
-     * apk下载路径为:SDCard/Android/data/com.winfo.update/cache/update_file/
+     * apk下载路径为:SDCard/Android/data/com.fr.knowledge/cache/update_file/
      */
     public static File getExternalCacheCustomDirectory(Context context) {
-        //在SDCard/Android/data/com.winfo.update/cache/update_file创建文件夹
+        //在SDCard/Android/data/com.fr.knowledge/cache/update_file创建文件夹
         File appCacheDir = new File(context.getExternalCacheDir(), "update");
         //如果不存在就创建
         if (!appCacheDir.exists()) {
-            if (appCacheDir.mkdirs()) {//创建成功就返回SDCard/Android/data/com.winfo.update/cache/update_file/
+            if (appCacheDir.mkdirs()) {//创建成功就返回SDCard/Android/data/com.fr.knowledge/cache/update_file/
                 return appCacheDir;
             } else {
-                //创建失败就返回默认的SDCard/Android/data/com.winfo.update/cache/
+                //创建失败就返回默认的SDCard/Android/data/com.fr.knowledge/cache/
                 return context.getExternalCacheDir();
             }
         } else {

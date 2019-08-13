@@ -35,6 +35,7 @@ public class PermissionUtils {
         }
         return instance;
     }
+
     /**
      * 检查权限检查
      *

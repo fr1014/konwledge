@@ -2,7 +2,6 @@ package com.fr.konwledge.webview;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -71,48 +70,6 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
             final Uri newUrl = request.getUrl();
             view.loadUrl(String.valueOf(newUrl));
             return true;
-//            String newUrl = view.getUrl();
-//            try {
-//                //处理intent协议
-//                if (newUrl.startsWith("intent://")) {
-//                    Intent intent;
-//                    try {
-//                        intent = Intent.parseUri(newUrl, Intent.URI_INTENT_SCHEME);
-//                        intent.addCategory("android.intent.category.BROWSABLE");
-//                        intent.setComponent(null);
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-//                            intent.setSelector(null);
-//                        }
-//                        List<ResolveInfo> resolves = getApplicationContext().getPackageManager().queryIntentActivities(intent,0);
-//                        if(resolves.size()>0){
-//                            startActivityIfNeeded(intent, -1);
-//                        }
-//                        return true;
-//                    } catch (URISyntaxException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                // 处理自定义scheme协议
-//                if (!newUrl.startsWith("http")) {
-//                    try {
-//                        // 以下固定写法
-//                        final Intent intent = new Intent(Intent.ACTION_VIEW,
-//                                Uri.parse(newUrl));
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                        startActivity(intent);
-//                    } catch (Exception e) {
-//                        // 防止没有安装的情况
-//                        e.printStackTrace();
-//                        Utils.ToastShort(getApplicationContext(),"您所打开的第三方App未安装！");
-//                    }
-//                    return true;
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//            return super.shouldOverrideUrlLoading(view, newUrl);
         }
     }
 
@@ -155,14 +112,6 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
         } else {
             mUrl = "";
         }
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-            mWebView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
     @Override

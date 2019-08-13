@@ -52,7 +52,6 @@ public class DownloadService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-
     private void downLoadFile() {
         HttpDownManager.getInstance().startDown(downInfo, new HttpProgressOnNextListener<DownInfo>() {
             @Override
