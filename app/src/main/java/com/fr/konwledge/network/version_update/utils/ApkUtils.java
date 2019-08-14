@@ -38,7 +38,7 @@ public class ApkUtils {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            Uri uri = FileProvider.getUriForFile(context, "com.winfo.update.provider", apkFile);
+            Uri uri = FileProvider.getUriForFile(context, "com.fr.konwledge.provider", apkFile);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(uri, "application/vnd.android.package-archive");
         } else {

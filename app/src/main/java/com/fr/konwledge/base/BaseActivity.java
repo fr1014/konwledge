@@ -23,11 +23,6 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
 
-        //防止App长时间进入后台，再次进入导致崩溃
-        if (savedInstanceState != null) {
-            savedInstanceState.putParcelable("android:fragments", null);
-        }
-
         super.onCreate(savedInstanceState);
 
         SystemUtil.setStatusBarCharacterDarkColor(this);
