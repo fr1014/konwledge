@@ -28,6 +28,7 @@ Api地址：http://gank.io/api
 - 图片加载：[Glide](https://github.com/bumptech/glide)
 - 列表：[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)
 - 圆形图片[CircleImageView](https://github.com/hdodenhof/CircleImageView)
+- 第三方登录集成开发[ShareSDK](http://www.mob.com/mobService/sharesdk)
 
 ## 版本更新
 #### 版本1.1
