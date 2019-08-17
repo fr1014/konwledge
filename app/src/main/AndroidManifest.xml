@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.fr.konwledge">
+    package="com.fr.knowledge">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-        android:name=".application.BaseApplication"
+        android:name="com.fr.knowledge.application.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,15 +25,15 @@
         android:theme="@style/LaunchScreenTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:name">
-        <activity android:name=".view.activity.SplashActivity">
+        <activity android:name="com.fr.knowledge.view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.LoginActivity"/>
-        <activity android:name=".webview.H5WebActivity">
+        <activity android:name="com.fr.knowledge.view.activity.LoginActivity"/>
+        <activity android:name="com.fr.knowledge.webview.H5WebActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -43,20 +43,22 @@
                 <data android:scheme="android_app" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name="com.fr.knowledge.view.activity.MainActivity" />
 
         <service
-            android:name=".network.version_update.service.DownloadService"
+            android:name="com.fr.knowledge.network.version_update.service.DownloadService"
             android:exported="false"/>
 
         <provider
         android:name="androidx.core.content.FileProvider"
-        android:authorities="com.fr.konwledge.provider"
+        android:authorities="com.fr.knowledge.provider"
         android:exported="false"
         android:grantUriPermissions="true">
+
         <meta-data
             android:name="android.support.FILE_PROVIDER_PATHS"
             android:resource="@xml/update_apk_paths" />
+
         </provider>
     </application>
 </manifest>

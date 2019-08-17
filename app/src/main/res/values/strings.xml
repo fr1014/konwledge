@@ -2,6 +2,7 @@
     <string name="app_name">每日干货</string>
     <string name="web_unlike">取消收藏</string>
     <string name="web_like">添加收藏</string>
+    <string name="app_name_debug">Debug每日干货</string>
 
     <string name="android_auto_update_dialog_title">发现新版本</string>
 

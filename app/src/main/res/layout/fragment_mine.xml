@@ -12,7 +12,7 @@
 
         <variable
             name="userbean"
-            type="com.fr.konwledge.bean.UserBean" />
+            type="com.fr.knowledge.bean.UserBean" />
     </data>
 
     <FrameLayout
@@ -86,7 +86,7 @@
 
             </RelativeLayout>
 
-            <com.fr.konwledge.view.customview.Item_view
+            <com.fr.knowledge.view.customview.Item_view
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:show_bottom_line="true"
@@ -94,13 +94,13 @@
                 custom:show_text="我的收藏" />
 
             <!--app:show_leftimg="@drawable/lishi"-->
-            <com.fr.konwledge.view.customview.Item_view
+            <com.fr.knowledge.view.customview.Item_view
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:show_bottom_line="true"
                 custom:show_text="历史记录" />
 
-            <com.fr.konwledge.view.customview.Item_view
+            <com.fr.knowledge.view.customview.Item_view
                 android:id="@+id/update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 custom:show_left_img="@drawable/ic_update"
                 custom:show_text="版本更新" />
 
-            <com.fr.konwledge.view.customview.Item_view
+            <com.fr.knowledge.view.customview.Item_view
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -118,7 +118,7 @@
                 custom:show_text="关于" />
 
             <!--app:show_leftimg="@drawable/about"-->
-            <com.fr.konwledge.view.customview.Item_view
+            <com.fr.knowledge.view.customview.Item_view
                 android:id="@+id/out_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
