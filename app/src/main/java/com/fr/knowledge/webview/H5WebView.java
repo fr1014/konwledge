@@ -2,6 +2,7 @@ package com.fr.knowledge.webview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -13,6 +14,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.fr.knowledge.network.download.httpdowonload.DownInfo;
+import com.fr.knowledge.network.version_update.service.DownloadService;
+import com.fr.knowledge.network.version_update.utils.Constants;
 import com.fr.knowledge.utils.NetStatusUtil;
 
 import java.io.File;
@@ -146,11 +150,34 @@ public class H5WebView extends WebView {
     }
 
     //利用浏览器下载文件
-    public class MyDownload implements DownloadListener{
+    public static class MyDownloadListener implements DownloadListener{
+        private DownInfo downInfo;
+        private Context context;
+
+        public MyDownloadListener(Context context){
+            this.context = context;
+        }
 
         @Override
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimeType, long contentLength) {
+//            downInfo = new DownInfo(url);
+//            String fileName = url.substring(url.lastIndexOf("/") + 1, url.length());
+//            File file = new File(context.getExternalCacheDir(), fileName);
+//            downInfo.setSavePath(file.getAbsolutePath());
+//            downInfo.setState(DownInfo.DownState.START);
+            goToDownload(context, url);
+        }
 
+        /**
+         * 启动服务传递下载地址进行下载
+         *
+         * @param context     activity
+         * @param downloadUrl 下载地址
+         */
+        private static void goToDownload(Context context, String downloadUrl) {
+            Intent intent = new Intent(context.getApplicationContext(), DownloadService.class);
+            intent.putExtra(Constants.APK_DOWNLOAD_URL, downloadUrl);
+            context.startService(intent);
         }
     }
 }

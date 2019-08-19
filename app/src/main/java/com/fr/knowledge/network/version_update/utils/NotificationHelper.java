@@ -89,7 +89,7 @@ public class NotificationHelper {
         builder.setTicker(mContext.getString(R.string.android_auto_update_notify_ticker))
                 .setContentTitle("版本更新")
                 .setContentText(text)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon)
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
                 .setWhen(System.currentTimeMillis())

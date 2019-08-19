@@ -36,6 +36,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
                     break;
                 case R.id.iv_wechat_login:
 //                    mUserViewModel.wechatLogin();
+                    this.onComplete();
                     Utils.ToastShort(mContext, "暂不支持微信登录！");
                     break;
             }
@@ -52,7 +53,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         startActivity(MainActivity.class);
         finish();
         Utils.ToastShort(mContext, "登录成功！");
-
     }
 
     @Override

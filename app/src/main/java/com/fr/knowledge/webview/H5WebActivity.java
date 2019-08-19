@@ -50,6 +50,7 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new Html5WebChromeClient());
         mWebView.setWebViewClient(new HtmlWebClient());
+        mWebView.setDownloadListener(new H5WebView.MyDownloadListener(mContext));
         mWebView.loadUrl(mUrl);
     }
 

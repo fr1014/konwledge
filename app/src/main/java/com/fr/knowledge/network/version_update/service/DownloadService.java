@@ -42,7 +42,7 @@ public class DownloadService extends Service {
         assert intent != null;
         String urlStr = intent.getStringExtra(Constants.APK_DOWNLOAD_URL);
         downInfo.setUrl(urlStr);
-        File dir = StorageUtils.getExternalCacheCustomDirectory(this);
+        File dir = StorageUtils.getExternalCacheDirectory(this);
         //File dir = StorageUtils.getExternalCacheDirectory(this);
         //File dir = StorageUtils.getCacheDirectory(this);
         String apkName = urlStr.substring(urlStr.lastIndexOf("/") + 1);
@@ -84,7 +84,6 @@ public class DownloadService extends Service {
             }
         });
     }
-
 
     @Override
     public void onDestroy() {

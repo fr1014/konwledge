@@ -83,13 +83,13 @@ public class UpdateChecker {
                         if (apkCode > versionCode) {
                             new NotificationHelper(mContext).showNotification(versionInfo.getUpdateMessage(), versionInfo.getDownloadUrl());
                         } else {
-                            Toast.makeText(mContext, mContext.getString(R.string.android_auto_update_toast_no_new_update), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mContext, mContext.getString(R.string.android_auto_update_toast_no_new_update), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(mContext, "请求没有成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "更新查询没有成功", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(mContext, "请求没有成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "更新查询没有成功", Toast.LENGTH_SHORT).show();
                 }
             }
 
