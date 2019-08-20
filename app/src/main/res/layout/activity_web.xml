@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
+
         <variable
             name="title"
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
+        android:id="@+id/parent_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -24,20 +27,28 @@
             app:titleTextColor="@color/text_color">
 
             <TextView
-                android:textColor="@color/text_color"
-                android:maxLines="1"
-                android:ellipsize="end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="@{title}" />
+                android:maxLines="1"
+                android:text="@{title}"
+                android:textColor="@color/text_color"
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
 
-        <FrameLayout
+        <RelativeLayout
+            android:layout_below="@id/toolbar"
             android:id="@+id/web_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </LinearLayout>
+        <!--加载提示的loading图-->
+        <include
+            layout="@layout/loading_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 </layout>

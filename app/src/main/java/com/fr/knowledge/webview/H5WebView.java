@@ -10,6 +10,8 @@ import android.view.KeyEvent;
 import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -41,6 +43,12 @@ public class H5WebView extends WebView {
     @SuppressLint("SetJavaScriptEnabled")
     private void init() {
         WebSettings webSettings = getSettings();
+
+        //调用JS方法
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setSupportMultipleWindows(true);
+
+        webSettings.setBuiltInZoomControls(true);  //原网页基础上缩放
         webSettings.setSupportZoom(true);  //支持缩放，默认为true
 
         //设置自适应屏幕，两者合用
@@ -49,9 +57,6 @@ public class H5WebView extends WebView {
 
         webSettings.setDefaultTextEncodingName("utf-8"); //设置编码格式
         webSettings.setLoadsImagesAutomatically(true);   //支持自动加载图片
-        //调用JS方法
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setSupportMultipleWindows(true);
 
         //有时候网页需要自己保存一些关键数据,Android H5WebView 需要自己设置
         saveDate(webSettings);
@@ -139,6 +144,7 @@ public class H5WebView extends WebView {
             return true;
         }
         //=========多窗口的问题==========================================================
+
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -179,5 +185,6 @@ public class H5WebView extends WebView {
             intent.putExtra(Constants.APK_DOWNLOAD_URL, downloadUrl);
             context.startService(intent);
         }
+
     }
 }

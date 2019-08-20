@@ -31,7 +31,7 @@ public class ImageHelper {
     public static void loadBlurImage(ImageView imageView,String url) {
         Glide.with(imageView.getContext())
                 .load(url)
-                .transform(new BlurTransform(imageView.getContext(),25,0.8f,70))
+                .transform(new BlurTransform(imageView.getContext(),25,0.4f,85))
                 .into(imageView);
     }
 
