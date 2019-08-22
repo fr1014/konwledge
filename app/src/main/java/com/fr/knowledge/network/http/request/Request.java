@@ -14,7 +14,7 @@ import retrofit2.http.Path;
  */
 public interface Request {
     //https://gank.io/api/
-    String BASE_URL = "https://gank.io/api/";
+    String BASE_URL = "http://gank.io/api/";
 
     //获取最新干货
     @GET("today")
