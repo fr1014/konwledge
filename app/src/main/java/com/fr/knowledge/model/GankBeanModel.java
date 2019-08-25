@@ -16,12 +16,12 @@ import java.util.List;
  * 作者：范瑞
  * 博客：https://www.jianshu.com/u/408f3c1b46a9
  */
-public class BeanModel extends BaseObservable {
+public class GankBeanModel extends BaseObservable {
     private ItemBean bean;
     public ObservableField<Integer> imageViewVisibility;
     private int mPosition;
 
-    public BeanModel(ItemBean bean, int position) {
+    public GankBeanModel(ItemBean bean, int position) {
         this.bean = bean;
         this.mPosition = position;
         initData();

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.fr.knowledge.R;
 import com.fr.knowledge.bean.ItemBean;
-import com.fr.knowledge.model.BeanModel;
+import com.fr.knowledge.model.GankBeanModel;
 import com.fr.knowledge.databinding.FragmentTodayBinding;
 import com.fr.knowledge.utils.DialogHelper;
 import com.fr.knowledge.utils.Utils;
@@ -29,7 +29,7 @@ import java.util.List;
 import static com.fr.knowledge.constant.MainConstant.LoadData.FIRST_LOAD;
 import static com.fr.knowledge.view.anim.anims.initRVAnim;
 
-public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView<ItemBean>, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
+public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements ITodayView<ItemBean>, XRecyclerView.LoadingListener, OnItemClickListener<GankBeanModel> {
 
     private RVBeanAdapter mAdapter;
     private TodayViewModel viewModel;
@@ -106,7 +106,7 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
     }
 
     @Override
-    public void onItemClickClick(View view, BeanModel bean) {
+    public void onItemClickClick(View view, GankBeanModel bean) {
         Bundle bundle = new Bundle();
         bundle.putString("url", bean.getUrl());
         bundle.putString("title", bean.getDesc());

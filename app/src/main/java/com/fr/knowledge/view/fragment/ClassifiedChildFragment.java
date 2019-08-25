@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.fr.knowledge.R;
 import com.fr.knowledge.base.BaseFragment;
 import com.fr.knowledge.bean.ItemBean;
-import com.fr.knowledge.model.BeanModel;
+import com.fr.knowledge.model.GankBeanModel;
 import com.fr.knowledge.databinding.FragmentClassifiedChildBinding;
 import com.fr.knowledge.utils.DialogHelper;
 import com.fr.knowledge.utils.Utils;
@@ -27,7 +27,7 @@ import java.util.List;
 import static com.fr.knowledge.constant.MainConstant.LoadData.FIRST_LOAD;
 import static com.fr.knowledge.view.anim.anims.initRVAnim;
 
-public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<BeanModel> {
+public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<GankBeanModel> {
     private String mClassified;
     private CategoryViewModel viewModel;
     private RVBeanAdapter mAdapter;
@@ -117,7 +117,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     }
 
     @Override
-    public void onItemClickClick(View view, BeanModel bean) {
+    public void onItemClickClick(View view, GankBeanModel bean) {
         Bundle bundle = new Bundle();
         bundle.putString("url", bean.getUrl());
         bundle.putString("title", bean.getDesc());
