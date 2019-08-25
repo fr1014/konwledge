@@ -31,6 +31,7 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding> {
             @Override
             public boolean onQueryTextSubmit(String query) {//点击提交按钮时
                 mCategory = query;
+                mSearchView.clearFocus();   //可以收起键盘
                 if (savedInstanceState != null) {
                     fragment = (ClassifiedChildFragment) getSupportFragmentManager().getFragment(savedInstanceState, "ClassifiedChildFragment");
                 } else {
