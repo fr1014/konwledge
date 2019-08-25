@@ -23,4 +23,9 @@ public interface Request {
     //获取分类干货
     @GET("data/{category}/{count}/{page}")
     Observable<Response<CategoryListBean<ItemBean>>> getCategoryBean(@Path("category")String category, @Path("count") int count, @Path("page") int page);
+
+    //搜素接口 http://gank.io/api/search/query/listview/category/Android/count/10/page/1
+    @GET("search/query/{category}/category/all/count/{count}/page/{page}")
+    Observable<Response<CategoryListBean<ItemBean>>> getSearchBean(@Path("category")String category, @Path("count") int count, @Path("page") int page);
+
 }

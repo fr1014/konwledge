@@ -14,4 +14,6 @@
     <color name="logo_bg">#659C9A9A</color>
     <color name="white_translucent_light">#66FFFFFF</color>
     <color name="white_translucent_dark">#99FFFFFF</color>
+    <color name="circle_view">#80000000</color>
+
 </resources>

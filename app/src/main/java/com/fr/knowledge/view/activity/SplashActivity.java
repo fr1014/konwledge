@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
     private UserViewModel mUserViewModel;
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         //定义全屏参数
         int flag= WindowManager.LayoutParams.FLAG_FULLSCREEN;
         //设置当前窗体为全屏显示

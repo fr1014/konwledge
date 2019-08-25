@@ -40,7 +40,7 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         getParameter();
         initErrorPage();//初始化自定义页面
         initView();

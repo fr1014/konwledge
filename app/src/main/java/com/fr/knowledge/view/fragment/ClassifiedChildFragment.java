@@ -32,9 +32,11 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     private CategoryViewModel viewModel;
     private RVBeanAdapter mAdapter;
     private XRecyclerView mXRecyclerView;
+    private final int flag;
 
-    public ClassifiedChildFragment(String classified){
+    public ClassifiedChildFragment(String classified,int flag){
         this.mClassified = classified;
+        this.flag = flag;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
 
     @Override
     public void initData() {
-        viewModel = new CategoryViewModel(this,this, mAdapter, mClassified);
+        viewModel = new CategoryViewModel(this,this, mAdapter, mClassified,flag);
     }
 
     @Override

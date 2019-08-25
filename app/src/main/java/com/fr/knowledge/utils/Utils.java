@@ -8,11 +8,12 @@ import androidx.databinding.BindingConversion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Utils {
 
     @BindingConversion
-    public static String convertDate(Date date){
+    public static String convertDate(Date date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(date);
     }
@@ -28,11 +29,15 @@ public class Utils {
         return date;
     }
 
-    public static void ToastShort(Context context,String message){
-        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+    public static boolean isEmpty(List list) {
+        return null != list && list.isEmpty();
     }
 
-    public static void ToastLong(Context context,String message){
-        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
+    public static void ToastShort(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void ToastLong(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }

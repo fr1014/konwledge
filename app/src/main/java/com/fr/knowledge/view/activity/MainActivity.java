@@ -3,14 +3,17 @@ package com.fr.knowledge.view.activity;
 import android.Manifest;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.fr.knowledge.BR;
 import com.fr.knowledge.R;
 import com.fr.knowledge.databinding.ActivityMainBinding;
+import com.fr.knowledge.model.UserModel;
 import com.fr.knowledge.network.version_update.utils.UpdateChecker;
 import com.fr.knowledge.utils.Utils;
 import com.fr.knowledge.utils.permission.Permission;
@@ -31,6 +34,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private FragmentAdapter mFragmentAdapter;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private UserModel userModel;
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -38,9 +42,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         mViewPager = binding.viewpager;
         mTabLayout = binding.tabs;
+
+        initViewData();
+
         List<String> titles = new ArrayList<>();
         titles.add("推荐");
         titles.add("分类");
@@ -59,6 +66,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         //获取存储权限
         checkPermission();
+    }
+
+    private void initViewData() {
+        userModel = new UserModel();
+        binding.setVariable(BR.userbean, userModel.getCurUserInfo());
     }
 
     private void checkUpdate() {
@@ -81,7 +93,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
     private void checkPermission() {
         if (PermissionUtils.needRequestPermission()) {
@@ -126,5 +137,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 fragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
             }
         }
+    }
+
+    public void search(View view) {
+        startActivity(SearchActivity.class);
     }
 }

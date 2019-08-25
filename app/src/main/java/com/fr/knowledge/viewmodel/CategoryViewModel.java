@@ -6,6 +6,7 @@ import com.fr.knowledge.base.BaseLoadListener;
 import com.fr.knowledge.bean.ItemBean;
 import com.fr.knowledge.constant.MainConstant;
 import com.fr.knowledge.model.CategoryModel;
+import com.fr.knowledge.model.SearchModel;
 import com.fr.knowledge.view.IView.ICategoryView;
 import com.fr.knowledge.view.adapter.RVBeanAdapter;
 import com.fr.knowledge.view.fragment.ClassifiedChildFragment;
@@ -24,12 +25,16 @@ public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements B
     private int mCurrPage = 1; //当前页面
     private int mLoadType; //加载数据的类型
     private ClassifiedChildFragment mClassifiedChildFragment;
+    private final int flag;       //0分类，其它为搜所
+    private static final int CLASSIFIED_CODE = 0;
+    private static final int SEARCH_CODE = 1;
 
-    public CategoryViewModel(Fragment fragment,ICategoryView iCategoryView, RVBeanAdapter adapter, String category) {
+    public CategoryViewModel(Fragment fragment,ICategoryView iCategoryView, RVBeanAdapter adapter, String category,int flag) {
         super(adapter);
         this.mICategoryView = iCategoryView;
         this.mCategory = category;
         this.mClassifiedChildFragment = (ClassifiedChildFragment) fragment;
+        this.flag = flag;
         getData();
     }
 
@@ -39,20 +44,32 @@ public class CategoryViewModel extends BaseViewModel<RVBeanAdapter> implements B
     @Override
     protected void getData() {
         mLoadType = MainConstant.LoadData.FIRST_LOAD;
-        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        if (flag == CLASSIFIED_CODE){
+            CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        }else {
+            SearchModel.getSearchListBean(mCategory,15,mCurrPage,this);
+        }
     }
 
 
     public void loadRefreshData(){
         mLoadType = MainConstant.LoadData.REFRESH;
         mCurrPage = 1;
-        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        if (flag == CLASSIFIED_CODE){
+            CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        }else {
+            SearchModel.getSearchListBean(mCategory,15,mCurrPage,this);
+        }
     }
 
     public void loadMoreData(){
         mLoadType = MainConstant.LoadData.LOAD_MORE;
         mCurrPage++;
-        CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        if (flag == 0){
+            CategoryModel.getCategoryListBean(mCategory,15,mCurrPage,this);
+        }else {
+            SearchModel.getSearchListBean(mCategory,15,mCurrPage,this);
+        }
     }
 
     @Override

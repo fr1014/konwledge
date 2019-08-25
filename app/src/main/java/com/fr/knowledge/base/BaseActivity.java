@@ -31,15 +31,15 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         //初始化DataBinding和ViewModel方法
         initViewDataBinding(savedInstanceState);
 
-        initData();
+        initData(savedInstanceState);
     }
+
+    protected abstract void initData(Bundle savedInstanceState);
 
     private void initViewDataBinding(Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState));
 
     }
-
-    protected abstract void initData();
 
     public abstract int initContentView(Bundle savedInstanceState);
 
