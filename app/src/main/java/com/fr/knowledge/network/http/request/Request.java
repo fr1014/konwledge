@@ -3,6 +3,8 @@ package com.fr.knowledge.network.http.request;
 import com.fr.knowledge.bean.CategoryListBean;
 import com.fr.knowledge.bean.ItemBean;
 import com.fr.knowledge.bean.TodayListBean;
+import com.fr.knowledge.bean.WanAndroidItemBean;
+import com.fr.knowledge.bean.WanAndroidListBean;
 
 import io.reactivex.Observable;
 import retrofit2.Response;
@@ -28,4 +30,7 @@ public interface Request {
     @GET("search/query/{category}/category/all/count/{count}/page/{page}")
     Observable<Response<CategoryListBean<ItemBean>>> getSearchBean(@Path("category")String category, @Path("count") int count, @Path("page") int page);
 
+    //WanAndroid首页文章接口https://www.wanandroid.com/article/list/0/json
+    @GET("https://www.wanandroid.com/article/list/{page}/json")
+    Observable<Response<WanAndroidListBean<WanAndroidItemBean>>> getWanAndroidItemBean(@Path("page")int page);
 }

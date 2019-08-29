@@ -1,6 +1,5 @@
 package com.fr.knowledge.view.activity;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,11 +13,8 @@ import com.fr.knowledge.BR;
 import com.fr.knowledge.R;
 import com.fr.knowledge.databinding.ActivityMainBinding;
 import com.fr.knowledge.model.UserModel;
-import com.fr.knowledge.network.version_update.utils.UpdateChecker;
 import com.fr.knowledge.utils.Utils;
 import com.fr.knowledge.utils.permission.Permission;
-import com.fr.knowledge.utils.permission.PermissionListener;
-import com.fr.knowledge.utils.permission.PermissionUtils;
 import com.fr.knowledge.view.adapter.FragmentAdapter;
 import com.fr.knowledge.base.BaseActivity;
 import com.fr.knowledge.view.fragment.ClassifiedFragment;
@@ -64,17 +60,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         //将TabLayout和ViewPager关联起来
         mTabLayout.setupWithViewPager(mViewPager);
 
-        //获取存储权限
-        checkPermission();
     }
 
     private void initViewData() {
         userModel = new UserModel();
         binding.setVariable(BR.userbean, userModel.getCurUserInfo());
-    }
-
-    private void checkUpdate() {
-        UpdateChecker.checkForNotification(mContext);
     }
 
     protected long exitTime; //记录第一次点击的时间
@@ -92,30 +82,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    private void checkPermission() {
-        if (PermissionUtils.needRequestPermission()) {
-            Permission.with(this)
-                    .requestCode(100)
-                    .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    .callBack(new PermissionListener() {
-                        @Override
-                        public void onPermit(int requestCode, String... permission) {
-                            //检查更新
-                            checkUpdate();
-                        }
-
-                        @Override
-                        public void onCancel(int requestCode, String... permission) {
-                            //确定后跳转至当前app的权限设置界面
-                            PermissionUtils.goSetting(mContext);
-                        }
-                    })
-                    .send();
-        } else {
-            checkUpdate();
-        }
     }
 
     //Fragment中无法回调onRequestPermissionsResult
