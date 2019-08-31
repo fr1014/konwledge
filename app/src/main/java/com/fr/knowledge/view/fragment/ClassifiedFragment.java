@@ -15,6 +15,7 @@ import com.fr.knowledge.view.adapter.FragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> {
@@ -39,20 +40,18 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
         mTabLayout = binding.tabs;
         mViewPager = binding.viewpager;
         mTitles = new ArrayList<>();
-        mTitles.add("Android");
-        mTitles.add("前端");
-        mTitles.add("iOS");
-        mTitles.add("App");
-        mTitles.add("拓展资源");
-        mTitles.add("瞎推荐");
-
+        mTitles.addAll(Arrays.asList("推荐", "Android", "前端", "iOS", "App", "拓展资源", "瞎推荐"));
         mFragments = new ArrayList<>();
-        for (int i = 0; i < mTitles.size(); i++){
+        for (int i = 0; i < mTitles.size(); i++) {
             mTabLayout.addTab(mTabLayout.newTab().setText(mTitles.get(i)));
-            Fragment classifiedChildFragment = new ClassifiedChildFragment(mTitles.get(i),CLASSIFIED_CODE);
-            mFragments.add(classifiedChildFragment);
+            Fragment fragment;
+            if (i == 0)
+                fragment = TodayFragment.getInstance();
+            else
+                fragment = new ClassifiedChildFragment(mTitles.get(i), CLASSIFIED_CODE);
+            mFragments.add(fragment);
         }
-
+        mTitles.size();
         mFragmentAdapter = new FragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mFragments, mTitles);
         mViewPager.setAdapter(mFragmentAdapter);
         mTabLayout.setupWithViewPager(mViewPager);

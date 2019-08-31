@@ -55,25 +55,15 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mXRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new RVBeanAdapter(getContext());
-        mXRecyclerView.setAdapter(mAdapter);
-
+        mAdapter = new RVBeanAdapter(getActivity());
         mAdapter.setOnItemClickListener(this);
+        mXRecyclerView.setAdapter(mAdapter);
     }
 
     public void initRecyclerViewAnim(List<ItemBean> list) {
-        initRVAnim(getContext(),mXRecyclerView);
+        initRVAnim(getContext(), mXRecyclerView);
         if (list != null && list.size() > 0) {
-            if (mAdapter == null) {
-                mAdapter = new RVBeanAdapter(getActivity());
-                mAdapter.setOnItemClickListener(this);
-                getActivity().runOnUiThread(() -> {
-                    mXRecyclerView.setAdapter(mAdapter);
-                    mAdapter.refreshData(list);
-                });
-            } else{
-                getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
-            }
+            getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
         }
     }
 

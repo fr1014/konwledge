@@ -12,8 +12,8 @@ import com.fr.knowledge.view.listener.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RVBaseAdapter<T, B, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
-    protected OnItemClickListener<B> mOnItemClickListener;
+public abstract class RVBaseAdapter<T, M, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+    protected OnItemClickListener<M> mOnItemClickListener;
     protected Context mContext;
     protected List<T> mList; // 数据源
     protected LayoutInflater inflater;
@@ -24,7 +24,7 @@ public abstract class RVBaseAdapter<T, B, VH extends RecyclerView.ViewHolder> ex
         inflater = LayoutInflater.from(context);
     }
 
-    public void setOnItemClickListener(OnItemClickListener<B> onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener<M> onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 
