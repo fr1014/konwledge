@@ -20,6 +20,7 @@ import com.fr.knowledge.base.BaseActivity;
 import com.fr.knowledge.view.fragment.ClassifiedFragment;
 import com.fr.knowledge.view.fragment.MineFragment;
 import com.fr.knowledge.view.fragment.TodayFragment;
+import com.fr.knowledge.view.fragment.WanAndroidFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -45,14 +46,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         initViewData();
 
         List<String> titles = new ArrayList<>();
-        titles.add("推荐");
+        titles.add("安卓");
         titles.add("分类");
         titles.add("我的");
         for (int i = 0; i < titles.size(); i++) {
             mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(i)));
         }
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(TodayFragment.getInstance());
+        fragments.add(WanAndroidFragment.getInstance());
         fragments.add(ClassifiedFragment.getInstance());
         fragments.add(MineFragment.getInstance());
         mFragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments, titles);

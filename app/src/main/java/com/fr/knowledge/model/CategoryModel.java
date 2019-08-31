@@ -25,7 +25,7 @@ public class CategoryModel {
 
                     @Override
                     public void onNext(Response<CategoryListBean<ItemBean>> listResponse) {
-                            loadListener.loadSuccess(listResponse.body().getResults());
+                        loadListener.loadSuccess(listResponse.body().getResults());
                     }
 
                     @Override

@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="onClickListener"
             type="android.view.View.OnClickListener" />
 
         <variable
-            name="bean"
-            type="com.fr.knowledge.model.GankBeanModel" />
+            name="wanbean"
+            type="com.fr.knowledge.model.WanAndroidBeanModel" />
 
         <variable
             name="date"
@@ -37,7 +38,7 @@
                 android:layout_toStartOf="@id/image_view"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="@{bean.desc}"
+                android:text="@{wanbean.title}"
                 android:textColor="@color/text_color" />
 
             <TextView
@@ -45,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="@{bean.type}"
+                android:text="android"
                 android:textColor="@color/text_color" />
 
             <TextView
@@ -55,7 +56,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="80dp"
                 android:layout_toEndOf="@id/type"
-                android:text="@{bean.date}"
+                android:text="@{wanbean.date}"
                 android:textColor="@color/text_color" />
 
             <ImageView
@@ -66,8 +67,7 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="4dp"
                 android:src="@drawable/ic_launcher_background"
-                android:visibility="@{bean.imageViewVisibility}"
-                app:imageUrl="@{bean.imageUrl}" />
+                app:imageUrl="@{wanbean.imageUrl}" />
         </RelativeLayout>
 
         <!--<View-->
