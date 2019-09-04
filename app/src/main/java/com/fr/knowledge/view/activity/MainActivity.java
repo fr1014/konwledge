@@ -19,7 +19,6 @@ import com.fr.knowledge.view.adapter.FragmentAdapter;
 import com.fr.knowledge.base.BaseActivity;
 import com.fr.knowledge.view.fragment.ClassifiedFragment;
 import com.fr.knowledge.view.fragment.MineFragment;
-import com.fr.knowledge.view.fragment.TodayFragment;
 import com.fr.knowledge.view.fragment.WanAndroidFragment;
 import com.google.android.material.tabs.TabLayout;
 

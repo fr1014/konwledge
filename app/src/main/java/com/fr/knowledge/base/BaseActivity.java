@@ -22,7 +22,6 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
-
         super.onCreate(savedInstanceState);
 
         SystemUtil.setStatusBarCharacterDarkColor(this);

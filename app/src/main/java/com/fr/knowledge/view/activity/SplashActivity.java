@@ -19,7 +19,7 @@ import static com.fr.knowledge.view.anim.anims.initScaleAnim;
 public class SplashActivity extends BaseActivity<ActivitySplashBinding> implements View.OnClickListener {
 
     private int recLen = 3; //倒计时提示为3秒
-    private static final long DELAYMILLIS = 3000;
+    private static final long DELAY_MILLIS = 3000;
     private TextView mTextView;
     Timer timer = new Timer();
     private Handler mHandler;
@@ -29,7 +29,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
     @Override
     protected void initData(Bundle savedInstanceState) {
         //定义全屏参数
-        int flag= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         //设置当前窗体为全屏显示
         getWindow().setFlags(flag, flag);
 
@@ -38,15 +38,15 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
 
         mUserViewModel = new UserViewModel();
 
-        initScaleAnim(this,binding.icon);
+        initScaleAnim(this, binding.icon);
 
-        timer.schedule(task, 1000,1000);     //等待1秒，每停顿1秒执行task
+        timer.schedule(task, 1000, 1000);     //等待1秒，每停顿1秒执行task
 
         //正常情况下不点击跳过
         mHandler = new Handler();
 
         //从闪屏页跳转到登录界面或首页
-        mHandler.postDelayed(mRunnable = () -> startActivity(), DELAYMILLIS);
+        mHandler.postDelayed(mRunnable = () -> startActivity(), DELAY_MILLIS);
     }
 
     // TimerTask类表示一个在指定时间内执行的task
@@ -74,7 +74,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
         switch (view.getId()) {
             case R.id.tv:
                 startActivity();
-                if (mRunnable != null){
+                if (mRunnable != null) {
                     //防止内存泄漏
                     mHandler.removeCallbacks(mRunnable);
                 }
@@ -86,11 +86,10 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> implemen
 
     private void startActivity() {
         //判断是否为登录状态
-        if (mUserViewModel.getUserInfo() != null) {
+        if (mUserViewModel.getUserInfo() != null)
             startActivity(MainActivity.class);
-        } else {
+        else
             startActivity(LoginActivity.class);
-        }
         SplashActivity.this.finish();
     }
 
