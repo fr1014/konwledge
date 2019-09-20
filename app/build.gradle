@@ -87,4 +87,9 @@ dependencies {
 
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'    //上拉加载、下拉刷新样式
     implementation 'de.hdodenhof:circleimageview:3.0.0'     //圆头像
+
+    def nav_version = "2.1.0"
+    // Java
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 }

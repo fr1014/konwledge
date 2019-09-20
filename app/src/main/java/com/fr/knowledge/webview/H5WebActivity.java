@@ -1,6 +1,6 @@
 package com.fr.knowledge.webview;
 
-import android.net.Uri;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +23,7 @@ import com.fr.knowledge.utils.Utils;
 import com.fr.knowledge.base.BaseActivity;
 
 public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
-
+    private static final String TAG = "H5WebActivity";
     private String mUrl;
     private RelativeLayout mParentView;
     private RelativeLayout mLayout;
@@ -56,11 +56,11 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
 
     private void initWebView() {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        mWebView = new H5WebView(getApplicationContext());
+        mWebView = new H5WebView(mContext);
         mWebView.setLayoutParams(params);
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new Html5WebChromeClient());
-        mWebView.setWebViewClient(new HtmlWebClient());
+        mWebView.setWebViewClient(new HtmlWebClient(mContext));
         mWebView.setDownloadListener(new H5WebView.MyDownloadListener(mContext));
         mWebView.loadUrl(mUrl);
         mParentView = (RelativeLayout) mWebView.getParent();//获取父容器
@@ -85,15 +85,10 @@ public class H5WebActivity extends BaseActivity<ActivityWebBinding> {
         }
     }
 
-    private class HtmlWebClient extends H5WebView.BaseWebViewClient {
-        /**
-         * 多页面在同一个WebView中打开，就是不新建activity或者调用系统浏览器打开
-         */
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            final Uri newUrl = request.getUrl();
-            view.loadUrl(String.valueOf(newUrl));
-            return true;
+    private class HtmlWebClient extends BaseWebViewClient {
+
+        public HtmlWebClient(Context context) {
+            super(context);
         }
 
         @Override

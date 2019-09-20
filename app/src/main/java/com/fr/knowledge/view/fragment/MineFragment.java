@@ -51,7 +51,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                     break;
                 case R.id.update:
 //                    //获取存储权限
-//                    checkPermission();
+                    checkPermission();
                     UpdateChecker.checkForDialog(mContext, dialog);
                     break;
             }
@@ -89,7 +89,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                         @Override
                         public void onPermit(int requestCode, String... permission) {
                             //检查更新
-//                            checkUpdate();
+                            checkUpdate();
                         }
 
                         @Override

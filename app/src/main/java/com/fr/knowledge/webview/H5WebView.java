@@ -10,16 +10,13 @@ import android.view.KeyEvent;
 import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.fr.knowledge.network.download.httpdowonload.DownInfo;
 import com.fr.knowledge.network.version_update.service.DownloadService;
 import com.fr.knowledge.network.version_update.utils.Constants;
-import com.fr.knowledge.utils.NetStatusUtil;
+import com.fr.knowledge.network.NetStatusUtil;
 
 import java.io.File;
 
@@ -63,7 +60,7 @@ public class H5WebView extends WebView {
         newWin(webSettings);
 
         setWebChromeClient(new BaseWebChromeClient());
-        setWebViewClient(new BaseWebViewClient());
+        setWebViewClient(new BaseWebViewClient(mContext));
     }
 
     /**
@@ -100,12 +97,7 @@ public class H5WebView extends WebView {
         }
     }
 
-    /**
-     * 实现一个基础的 WebViewClient ，如果有更多的需要，直接继承它
-     */
-    static class BaseWebViewClient extends WebViewClient {
 
-    }
 
     /**
      * 实现一个基础的 WebChromeClient ，如果有更多的需要，直接继承它
