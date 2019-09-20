@@ -1,4 +1,4 @@
-package com.fr.knowledge.utils;
+package com.fr.knowledge.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

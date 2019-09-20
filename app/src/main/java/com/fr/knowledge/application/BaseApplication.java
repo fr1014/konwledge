@@ -18,7 +18,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RetrofitManager.getInstance().init(BuildConfig.DEBUG);
+        RetrofitManager.getInstance().init();
         //初始化MobSDK
         MobSDK.init(this);
     }
