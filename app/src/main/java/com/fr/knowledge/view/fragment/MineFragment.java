@@ -33,7 +33,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     @Override
     protected void initView() {
         initClick();
-        dialog = new ProgressDialog(getContext());
+        dialog = new ProgressDialog(mContext);
         dialog.setMessage(getString(R.string.android_auto_update_dialog_checking));
     }
 

@@ -52,11 +52,11 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
         mXRecyclerView.setArrowImageView(R.mipmap.pull_down_arrow);
         mXRecyclerView.setLoadingListener(this);
 
-        mXRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mXRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
     }
 
     public void initRecyclerViewAnim(List<ItemBean> list) {
-        initRVAnim(getContext(),mXRecyclerView);
+        initRVAnim(mContext,mXRecyclerView);
         if (list != null && list.size() > 0) {
             if (mAdapter == null) {
                 mAdapter = new RVBeanAdapter(getActivity());
@@ -88,7 +88,7 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
     @Override
     public void loadStart(int loadType) {
         if (loadType == FIRST_LOAD) {
-            DialogHelper.getInstance().show(getContext(), "加载中...");
+            DialogHelper.getInstance().show(mContext, "加载中...");
         }
     }
 
@@ -102,7 +102,7 @@ public class TodayFragment extends BaseFragment<FragmentTodayBinding> implements
     public void loadFailure(String message) {
         DialogHelper.getInstance().close();
         mXRecyclerView.refreshComplete();
-        Utils.ToastShort(getContext(), message);
+        Utils.ToastShort(mContext, message);
     }
 
     @Override

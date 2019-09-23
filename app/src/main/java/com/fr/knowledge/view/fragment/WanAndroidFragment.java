@@ -50,10 +50,10 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanandroidBinding> 
         mXRecyclerView.setArrowImageView(R.mipmap.pull_down_arrow);
         mXRecyclerView.setLoadingListener(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         mXRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new RVWanAndroidBeanAdapter(getActivity());
+        mAdapter = new RVWanAndroidBeanAdapter(mContext);
         mAdapter.setOnItemClickListener(this);
         mXRecyclerView.setAdapter(mAdapter);
     }
@@ -71,7 +71,7 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanandroidBinding> 
     @Override
     public void loadStart(int loadType) {
         if (loadType == FIRST_LOAD) {
-            DialogHelper.getInstance().show(getContext(), "加载中...");
+            DialogHelper.getInstance().show(mContext, "加载中...");
         }
     }
 
@@ -87,7 +87,7 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanandroidBinding> 
         DialogHelper.getInstance().close();
         binding.recyclerView.loadMoreComplete();
         binding.recyclerView.refreshComplete();
-        Utils.ToastShort(getContext(), message);
+        Utils.ToastShort(mContext, message);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanandroidBinding> 
     }
 
     public void initRecyclerViewAnim(List<WanAndroidItemBean> list) {
-        initRVAnim(getContext(), mXRecyclerView);
+        initRVAnim(mContext, mXRecyclerView);
         if (list != null && list.size() > 0) {
             getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
         }

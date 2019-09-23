@@ -52,7 +52,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
         mXRecyclerView.setArrowImageView(R.mipmap.pull_down_arrow);
         mXRecyclerView.setLoadingListener(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         mXRecyclerView.setLayoutManager(layoutManager);
 
         mAdapter = new RVBeanAdapter(getActivity());
@@ -61,7 +61,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     }
 
     public void initRecyclerViewAnim(List<ItemBean> list) {
-        initRVAnim(getContext(), mXRecyclerView);
+        initRVAnim(mContext, mXRecyclerView);
         if (list != null && list.size() > 0) {
             getActivity().runOnUiThread(() -> mAdapter.refreshData(list));
         }
@@ -87,7 +87,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     @Override
     public void loadStart(int loadType) {
         if (loadType == FIRST_LOAD) {
-            DialogHelper.getInstance().show(getContext(), "加载中...");
+            DialogHelper.getInstance().show(mContext, "加载中...");
         }
     }
 
@@ -103,7 +103,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
         DialogHelper.getInstance().close();
         binding.recyclerView.loadMoreComplete();
         binding.recyclerView.refreshComplete();
-        Utils.ToastShort(getContext(), message);
+        Utils.ToastShort(mContext, message);
     }
 
     @Override
