@@ -34,7 +34,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     private XRecyclerView mXRecyclerView;
     private final int flag;
 
-    public ClassifiedChildFragment(String classified,int flag){
+    public ClassifiedChildFragment(String classified, int flag){
         this.mClassified = classified;
         this.flag = flag;
     }
