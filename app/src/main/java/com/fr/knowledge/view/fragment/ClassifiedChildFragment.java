@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fr.knowledge.R;
@@ -29,14 +30,27 @@ import static com.fr.knowledge.view.anim.anims.initRVAnim;
 
 public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChildBinding> implements ICategoryView, XRecyclerView.LoadingListener, OnItemClickListener<GankBeanModel> {
     private String mClassified;
+    private int mFlag;
     private CategoryViewModel viewModel;
     private RVBeanAdapter mAdapter;
     private XRecyclerView mXRecyclerView;
-    private final int flag;
+    private static final String key_flag = "FLAG";
+    private static final String key_classified = "CLASSIFIED";
 
-    public ClassifiedChildFragment(String classified, int flag){
-        this.mClassified = classified;
-        this.flag = flag;
+
+    public static Fragment getInstance(String classified,int flag){
+        Bundle bundle = new Bundle();
+        bundle.putInt(key_flag,flag);
+        bundle.putString(key_classified,classified);
+        ClassifiedChildFragment childFragment = new ClassifiedChildFragment();
+        childFragment.setArguments(bundle);
+        return childFragment;
+    }
+
+    public ClassifiedChildFragment(){
+        Bundle bundle = new Bundle();
+        this.mClassified = bundle.getString(key_classified);
+        this.mFlag = bundle.getInt(key_flag);
     }
 
     @Override
@@ -69,7 +83,7 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
 
     @Override
     public void initData() {
-        viewModel = new CategoryViewModel(this,this, mAdapter, mClassified,flag);
+        viewModel = new CategoryViewModel(this,this, mAdapter, mClassified,mFlag);
     }
 
     @Override

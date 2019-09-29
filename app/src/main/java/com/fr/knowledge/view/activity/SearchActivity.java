@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.fr.knowledge.R;
 import com.fr.knowledge.base.BaseActivity;
@@ -14,7 +15,7 @@ import com.fr.knowledge.view.fragment.ClassifiedChildFragment;
 
 public class SearchActivity extends BaseActivity<ActivitySearchBinding> {
 
-    private ClassifiedChildFragment fragment;
+    private Fragment fragment;
     private String mCategory;
     private SearchView mSearchView;
     private Toolbar mToolbar;
@@ -32,7 +33,7 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding> {
             public boolean onQueryTextSubmit(String query) {//点击提交按钮时
                 mCategory = query;
                 mSearchView.clearFocus();   //可以收起键盘
-                fragment = new ClassifiedChildFragment(mCategory, SEARCH_CODE);
+                fragment = ClassifiedChildFragment.getInstance(mCategory, SEARCH_CODE);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.search_fragment, fragment)
                         .commit();

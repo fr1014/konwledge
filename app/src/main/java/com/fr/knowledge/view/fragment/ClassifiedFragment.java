@@ -24,7 +24,7 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
     private ViewPager mViewPager;
     private List<String> mTitles;
     private List<Fragment> mFragments;
-    private static final int CLASSIFIED_CODE = 0;
+    private final int CLASSIFIED_CODE = 0;
 
     public static Fragment getInstance() {
         return new ClassifiedFragment();
@@ -48,7 +48,7 @@ public class ClassifiedFragment extends BaseFragment<FragmentClassifiedBinding> 
             if (i == 0)
                 fragment = TodayFragment.getInstance();
             else
-                fragment = new ClassifiedChildFragment(mTitles.get(i), CLASSIFIED_CODE);
+                fragment = ClassifiedChildFragment.getInstance(mTitles.get(i), CLASSIFIED_CODE);
             mFragments.add(fragment);
         }
         mTitles.size();
