@@ -34,14 +34,14 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
     private CategoryViewModel viewModel;
     private RVBeanAdapter mAdapter;
     private XRecyclerView mXRecyclerView;
-    private static final String key_flag = "FLAG";
-    private static final String key_classified = "CLASSIFIED";
+    private static final String KEY_FLAG = "flag";
+    private static final String classified = "CLASSIFIED";
 
 
     public static Fragment getInstance(String classified,int flag){
         Bundle bundle = new Bundle();
-        bundle.putInt(key_flag,flag);
-        bundle.putString(key_classified,classified);
+        bundle.putInt(KEY_FLAG,flag);
+        bundle.putString(classified,classified);
         ClassifiedChildFragment childFragment = new ClassifiedChildFragment();
         childFragment.setArguments(bundle);
         return childFragment;
@@ -49,8 +49,8 @@ public class ClassifiedChildFragment extends BaseFragment<FragmentClassifiedChil
 
     public ClassifiedChildFragment(){
         Bundle bundle = new Bundle();
-        this.mClassified = bundle.getString(key_classified);
-        this.mFlag = bundle.getInt(key_flag);
+        this.mClassified = bundle.getString(classified);
+        this.mFlag = bundle.getInt(KEY_FLAG);
     }
 
     @Override
